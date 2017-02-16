@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "server": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -10,5 +11,26 @@
   },
   "author": "Sergey Illarionov",
   "license": "ISC",
-  "homepage": ""
+  "homepage": "",
+  "dependencies": {
+    "async": "^2.1.4",
+    "body-parser": "^1.14.1",
+    "connect-mongo": "^0.8.2",
+    "errorhandler": "^1.4.2",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.45",
+    "mongoose": "^4.1.9",
+    "morgan": "^1.6.1",
+    "nconf": "^0.8.0",
+    "node-uuid": "^1.4.3",
+    "passport-facebook": "^2.0.0",
+    "passport-google-oauth": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.3.0",
+    "string": "^3.3.1",
+    "twig": "^0.8.2",
+    "validator": "^4.4.0",
+    "winston": "^1.0.2"
+  },
+  "devDependencies": {}
 }
