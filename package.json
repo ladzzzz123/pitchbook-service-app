@@ -1,0 +1,14 @@
+{
+  "name": "pitchbook-offices-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Sergey Illarionov",
+  "license": "ISC",
+  "homepage": ""
+}
