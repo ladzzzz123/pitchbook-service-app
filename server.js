@@ -23,6 +23,7 @@ mongoose.connect(config.get('db:connection') + config.get('db:name'), config.get
     /**
      * Application settings
      * */
+    require('./app')(app);
 
     /**
      * Middlewares

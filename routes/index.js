@@ -18,11 +18,10 @@ module.exports = function (app) {
     /**
      * API
      */
-    // app.post('/api/sign-in', api.signIn);
-    // app.post('/api/sign-up', api.signUp);
-    // app.post('/api/forgot-password', api.forgotPassword);
-    // app.post('/api/reset-password/:token', api.resetPassword);
-
+    app.get('/api/offices', api.getAllOffices);
+    app.post('/api/office/create', api.officeCreate);
+    app.post('/api/office/update', api.officeUpdate);
+    app.post('/api/office/delete', api.officeDelete);
 
     /**
      * Default
