@@ -3,7 +3,7 @@ import React from 'react';
 class App extends React.Component {
   render() {
     return (
-      <div>Yes</div>
+      <div>{this.props.children}</div>
     );
   }
 }

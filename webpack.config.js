@@ -13,11 +13,15 @@ module.exports = {
     js: './client/main.js',
     vendor: [
       'react',
+      'react-bootstrap',
       'react-dom',
+      'react-tap-event-plugin',
+      'react-router',
       'redux',
+      'react-router-redux',
       'redux-thunk',
       'react-redux',
-      'axios'
+      'axios',
     ]
   },
   output: {
