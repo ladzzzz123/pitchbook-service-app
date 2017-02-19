@@ -116,100 +116,108 @@ var Offices = function Offices(props) {
     'div',
     { className: 'office' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { className: 'row' },
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Grid"],
+      { fluid: true },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'col-sm-5' },
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Row"],
+        null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'dl',
-          { className: 'row' },
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+          { xs: 12, sm: 12, md: 5, lg: 4, className: 'no-padding-left no-padding-right' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'dt',
-            { className: 'col-sm-4' },
-            'Address:'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'dd',
-            { className: 'col-sm-8' },
+            'dl',
+            { className: 'row' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
-              { className: 'office__primary-hq' },
-              'Primary HQ'
+              'dt',
+              { className: 'col-sm-4' },
+              'Address:'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
-              { className: 'office__stree-address-1' },
-              '901 Fifth Avenue'
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
-              { className: 'office__stree-address-2' },
-              'Suite 1200'
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
-              { className: 'office__postal-data' },
-              'Seattle, WA 98164'
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
-              { className: 'office__postal-data' },
-              'United States'
+              'dd',
+              { className: 'col-sm-8' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'office__primary-hq' },
+                'Primary HQ'
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'office__stree-address-1' },
+                '901 Fifth Avenue'
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'office__stree-address-2' },
+                'Suite 1200'
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'office__postal-data' },
+                'Seattle, WA 98164'
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'office__postal-data' },
+                'United States'
+              )
             )
           )
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'col-sm-5' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'dl',
-          { className: 'row' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'dt',
-            { className: 'col-sm-4' },
-            'Phone:'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'dd',
-            { className: 'col-sm-8' },
-            '+1 (206) 623 - 1986'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'dt',
-            { className: 'col-sm-4' },
-            'Fax:'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'dd',
-            { className: 'col-sm-8' },
-            '+1 (206) 623 - 2708'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'dt',
-            { className: 'col-sm-4' },
-            'Email:'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'dd',
-            { className: 'col-sm-8' },
-            'info@pitchbook.com'
-          )
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'col-sm-2' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
-          { className: 'btn-removeButton btn-removeButton--oficeCard' },
-          'Remove'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
-          { className: 'btn-editButton btn-editButton--oficeCard' },
-          'Edit'
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+          { xs: 12, sm: 12, md: 5, lg: 4, className: 'no-padding-left no-padding-right' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dl',
+            { className: 'row' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'dt',
+              { className: 'col-sm-4' },
+              'Phone:'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'dd',
+              { className: 'col-sm-8' },
+              '+1 (206) 623 - 1986'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'dt',
+              { className: 'col-sm-4' },
+              'Fax:'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'dd',
+              { className: 'col-sm-8' },
+              '+1 (206) 623 - 2708'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'dt',
+              { className: 'col-sm-4' },
+              'Email:'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'dd',
+              { className: 'col-sm-8' },
+              'info@pitchbook.com'
+            )
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+          { xs: 12, sm: 12, md: 2, lg: 4, className: 'no-padding-left no-padding-right' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'office__actions' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+              { className: 'btn-removeButton btn-removeButton--oficeCard' },
+              'Remove'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+              { className: 'btn-editButton btn-editButton--oficeCard' },
+              'Edit'
+            )
+          )
         )
       )
     )
@@ -754,7 +762,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".office {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.office dl dt {\n  text-align: right;\n}\n", ""]);
+exports.push([module.i, ".office {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.office dl dt {\n  text-align: right;\n}\n@media (max-width: 992px) {\n  .office__actions {\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .office dl dt {\n    text-align: left;\n  }\n}\n", ""]);
 
 // exports
 
@@ -799,7 +807,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/**\n * HR dotted\n * */\n/**\n * Main\n * */\nbody {\n  color: #5e7287;\n  background: #f7f8fa;\n}\n.no-padding-left {\n  padding-left: 0 !important;\n}\n.no-padding-right {\n  padding-right: 0 !important;\n}\n/**\n * Main Grid\n * */\n.app-grid {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 2px;\n  background: #fff;\n  margin-left: 0;\n  margin-right: 0;\n}\n.app-grid__sidebar {\n  background: #e9eff5;\n}\n/**\n * Buttons\n * */\n.btn-default {\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.btn-default:hover {\n  background-color: #ffffff;\n}\n.btn-addButton {\n  color: #566d86;\n  font-weight: bold;\n  padding: 5px 15px;\n}\n.btn-addButton:hover {\n  color: #566d86;\n}\n.btn-removeButton {\n  color: #5e7287;\n  padding: 2px 15px;\n}\n.btn-removeButton:hover {\n  color: #5e7287;\n}\n.btn-removeButton--oficeCard {\n  margin: 0 5px 5px 0;\n}\n.btn-editButton {\n  color: #fff;\n  font-weight: bold;\n  padding: 3px 15px;\n  border: 0;\n  background: #2888d1;\n}\n.btn-editButton:hover {\n  color: #fff;\n  background: #1b7dc7;\n}\n.btn-editButton--oficeCard {\n  margin-top: -5px;\n}\n", ""]);
+exports.push([module.i, "/**\n * HR dotted\n * */\n/**\n * Main\n * */\nbody {\n  color: #5e7287;\n  background: #f7f8fa;\n}\n.no-padding-left {\n  padding-left: 0 !important;\n}\n.no-padding-right {\n  padding-right: 0 !important;\n}\n/**\n * Main Grid\n * */\n.app-grid {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 2px;\n  background: #fff;\n  margin-left: 0;\n  margin-right: 0;\n}\n.app-grid__sidebar {\n  background: #e9eff5;\n}\n/**\n * Buttons\n * */\n.btn-default {\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.btn-default:hover {\n  background-color: #ffffff;\n}\n.btn-addButton {\n  color: #566d86;\n  font-weight: bold;\n  padding: 5px 15px;\n}\n.btn-addButton:hover {\n  color: #566d86;\n}\n.btn-removeButton {\n  color: #5e7287;\n  padding: 2px 15px;\n}\n.btn-removeButton:hover {\n  color: #5e7287;\n}\n.btn-removeButton--oficeCard {\n  margin: 0 5px 5px 0;\n}\n.btn-editButton {\n  color: #fff;\n  font-weight: bold;\n  padding: 3px 15px;\n  border: 0;\n  background: #2888d1;\n}\n.btn-editButton:hover {\n  color: #fff;\n  background: #1b7dc7;\n}\n.btn-editButton--oficeCard {\n  vertical-align: top;\n}\n", ""]);
 
 // exports
 
