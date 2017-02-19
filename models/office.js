@@ -45,9 +45,9 @@ var OfficeSchema = new Schema({
         type: String,
         default: ''
     },
-    office_type: {
-        type: String,
-        default: ''
+    primary_hq: {
+        type: Boolean,
+        default: false
     },
     isDelete: {
       type: Boolean,
