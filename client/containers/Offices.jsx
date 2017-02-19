@@ -1,11 +1,12 @@
 import React from 'react';
+import Offices from '../components/Offices/Offices';
 
-class Offices extends React.Component {
+class OfficesContainer extends React.Component {
   render() {
     return (
-      <div>Offices</div>
+      <Offices />
     );
   }
 }
 
-export default Offices;
+export default OfficesContainer;

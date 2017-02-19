@@ -4,6 +4,7 @@
  * Main
  * */
 body {
+  color: @main-font-color;
   background: @body-bg;
 }
 .no-padding-left {
@@ -16,7 +17,7 @@ body {
 /**
  * Main Grid
  * */
-.show-grid {
+.app-grid {
   display: -ms-flex;
   display: -webkit-flex;
   display: flex;
@@ -28,7 +29,53 @@ body {
   &__sidebar {
     background: #e9eff5;
   }
-  &__content {
+}
 
+/**
+ * Buttons
+ * */
+ .btn-default {
+   border-radius: 2px;
+   border: 1px solid #d6d6d6;
+
+   &:hover {
+     background-color: #ffffff;
+   }
+ }
+.btn-addButton {
+  color: #566d86;
+  font-weight: bold;
+  padding: 5px 15px;
+
+  &:hover {
+    color: #566d86;
+  }
+}
+.btn-removeButton {
+  color: @main-font-color;
+  padding: 2px 15px;
+
+  &:hover {
+    color: @main-font-color;
+  }
+
+  &--oficeCard {
+    margin: 0 5px 5px 0;
+  }
+}
+.btn-editButton {
+  color: #fff;
+  font-weight: bold;
+  padding: 3px 15px;
+  border: 0;
+  background: #2888d1;
+
+  &:hover {
+    color: #fff;
+    background: #1b7dc7;
+  }
+
+  &--oficeCard {
+    margin-top: -5px;
   }
 }

@@ -9,11 +9,11 @@ class App extends React.Component {
       <div>
         <Header />
         <Grid fluid>
-          <Row className="show-grid">
-            <Col xs={3} sm={3} md={3} className="no-padding-left no-padding-right show-grid__sidebar">
+          <Row className="show-grid app-grid">
+            <Col xs={3} sm={3} md={3} lg={2} className="no-padding-left no-padding-right app-grid__sidebar">
               <Sidebar />
             </Col>
-            <Col xs={9} sm={9} md={9} className="show-grid__content">
+            <Col xs={9} sm={9} md={9} lg={10} className="app-grid__content">
               <div>{this.props.children}</div>
             </Col>
           </Row>

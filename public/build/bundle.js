@@ -97,6 +97,249 @@ if(true) {
 
 /***/ }),
 
+/***/ "./client/components/Offices/OfficeCard.jsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/react.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__ = __webpack_require__("./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__OfficeCard_less__ = __webpack_require__("./client/components/Offices/OfficeCard.less");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__OfficeCard_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__OfficeCard_less__);
+
+
+
+
+
+var Offices = function Offices(props) {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    { className: 'office' },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'row' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'col-sm-5' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'dl',
+          { className: 'row' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dt',
+            { className: 'col-sm-4' },
+            'Address:'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dd',
+            { className: 'col-sm-8' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'office__primary-hq' },
+              'Primary HQ'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'office__stree-address-1' },
+              '901 Fifth Avenue'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'office__stree-address-2' },
+              'Suite 1200'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'office__postal-data' },
+              'Seattle, WA 98164'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'office__postal-data' },
+              'United States'
+            )
+          )
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'col-sm-5' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'dl',
+          { className: 'row' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dt',
+            { className: 'col-sm-4' },
+            'Phone:'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dd',
+            { className: 'col-sm-8' },
+            '+1 (206) 623 - 1986'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dt',
+            { className: 'col-sm-4' },
+            'Fax:'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dd',
+            { className: 'col-sm-8' },
+            '+1 (206) 623 - 2708'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dt',
+            { className: 'col-sm-4' },
+            'Email:'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'dd',
+            { className: 'col-sm-8' },
+            'info@pitchbook.com'
+          )
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'col-sm-2' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+          { className: 'btn-removeButton btn-removeButton--oficeCard' },
+          'Remove'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+          { className: 'btn-editButton btn-editButton--oficeCard' },
+          'Edit'
+        )
+      )
+    )
+  );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = Offices;
+
+/***/ }),
+
+/***/ "./client/components/Offices/OfficeCard.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Offices/OfficeCard.less");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/style-loader/addStyles.js")(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(true) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Offices/OfficeCard.less", function() {
+			var newContent = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Offices/OfficeCard.less");
+			if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./client/components/Offices/Offices.jsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/react.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__ = __webpack_require__("./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__OfficeCard_jsx__ = __webpack_require__("./client/components/Offices/OfficeCard.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Offices_less__ = __webpack_require__("./client/components/Offices/Offices.less");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Offices_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Offices_less__);
+
+
+
+
+
+
+var Offices = function Offices(props) {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'div',
+    { className: 'offices' },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'h1',
+      { className: 'offices__header' },
+      'Offices ',
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'span',
+        { className: 'offices__header--grey' },
+        '| Company Info'
+      )
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'offices_description' },
+      'Updating your location and contact informationhelps you appeal to regional investorsand service providers'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'dotted' }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'clearfix' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'offices__add-action' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+          { className: 'btn-addButton' },
+          'Add New Office'
+        )
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'offices__amount' },
+        '3 Offices'
+      )
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'offices__items' },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__OfficeCard_jsx__["a" /* default */], null)
+    )
+  );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = Offices;
+
+/***/ }),
+
+/***/ "./client/components/Offices/Offices.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Offices/Offices.less");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/style-loader/addStyles.js")(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(true) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Offices/Offices.less", function() {
+			var newContent = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Offices/Offices.less");
+			if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ "./client/components/Sidebar.jsx":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -256,15 +499,15 @@ var App = function (_React$Component) {
           { fluid: true },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Row"],
-            { className: 'show-grid' },
+            { className: 'show-grid app-grid' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-              { xs: 3, sm: 3, md: 3, className: 'no-padding-left no-padding-right show-grid__sidebar' },
+              { xs: 3, sm: 3, md: 3, lg: 2, className: 'no-padding-left no-padding-right app-grid__sidebar' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Sidebar__["a" /* default */], null)
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-              { xs: 9, sm: 9, md: 9, className: 'show-grid__content' },
+              { xs: 9, sm: 9, md: 9, lg: 10, className: 'app-grid__content' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
@@ -290,6 +533,7 @@ var App = function (_React$Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/react.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Offices_Offices__ = __webpack_require__("./client/components/Offices/Offices.jsx");
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -300,30 +544,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Offices = function (_React$Component) {
-  _inherits(Offices, _React$Component);
 
-  function Offices() {
-    _classCallCheck(this, Offices);
+var OfficesContainer = function (_React$Component) {
+  _inherits(OfficesContainer, _React$Component);
 
-    return _possibleConstructorReturn(this, (Offices.__proto__ || Object.getPrototypeOf(Offices)).apply(this, arguments));
+  function OfficesContainer() {
+    _classCallCheck(this, OfficesContainer);
+
+    return _possibleConstructorReturn(this, (OfficesContainer.__proto__ || Object.getPrototypeOf(OfficesContainer)).apply(this, arguments));
   }
 
-  _createClass(Offices, [{
+  _createClass(OfficesContainer, [{
     key: 'render',
     value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        null,
-        'Offices'
-      );
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_Offices_Offices__["a" /* default */], null);
     }
   }]);
 
-  return Offices;
+  return OfficesContainer;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["a"] = Offices;
+/* harmony default export */ __webpack_exports__["a"] = OfficesContainer;
 
 /***/ }),
 
@@ -505,6 +746,36 @@ exports.push([module.i, ".header {\n  border: none;\n  border-radius: 0;\n  back
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Offices/OfficeCard.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.i, ".office {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.office dl dt {\n  text-align: right;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Offices/Offices.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.i, "/**\n * HR dotted\n * */\n.offices {\n  padding-left: 5%;\n}\n.offices__header {\n  color: #53687e;\n  font-size: 30px;\n  font-weight: normal;\n  padding-top: 20px;\n  padding-bottom: 15px;\n  text-transform: uppercase;\n}\n.offices__header--grey {\n  color: #b9bfc5;\n}\n.offices__add-action {\n  float: left;\n}\n.offices__amount {\n  float: right;\n}\n.offices__items {\n  margin-top: 15px;\n}\n.offices hr.dotted {\n  border-top: 1px dotted #dcdfe2;\n  margin: 40px 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Sidebar.less":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -528,7 +799,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/**\n * Main\n * */\nbody {\n  background: #f7f8fa;\n}\n.no-padding-left {\n  padding-left: 0 !important;\n}\n.no-padding-right {\n  padding-right: 0 !important;\n}\n/**\n * Main Grid\n * */\n.show-grid {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 2px;\n  background: #fff;\n  margin-left: 0;\n  margin-right: 0;\n}\n.show-grid__sidebar {\n  background: #e9eff5;\n}\n", ""]);
+exports.push([module.i, "/**\n * HR dotted\n * */\n/**\n * Main\n * */\nbody {\n  color: #5e7287;\n  background: #f7f8fa;\n}\n.no-padding-left {\n  padding-left: 0 !important;\n}\n.no-padding-right {\n  padding-right: 0 !important;\n}\n/**\n * Main Grid\n * */\n.app-grid {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 2px;\n  background: #fff;\n  margin-left: 0;\n  margin-right: 0;\n}\n.app-grid__sidebar {\n  background: #e9eff5;\n}\n/**\n * Buttons\n * */\n.btn-default {\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.btn-default:hover {\n  background-color: #ffffff;\n}\n.btn-addButton {\n  color: #566d86;\n  font-weight: bold;\n  padding: 5px 15px;\n}\n.btn-addButton:hover {\n  color: #566d86;\n}\n.btn-removeButton {\n  color: #5e7287;\n  padding: 2px 15px;\n}\n.btn-removeButton:hover {\n  color: #5e7287;\n}\n.btn-removeButton--oficeCard {\n  margin: 0 5px 5px 0;\n}\n.btn-editButton {\n  color: #fff;\n  font-weight: bold;\n  padding: 3px 15px;\n  border: 0;\n  background: #2888d1;\n}\n.btn-editButton:hover {\n  color: #fff;\n  background: #1b7dc7;\n}\n.btn-editButton--oficeCard {\n  margin-top: -5px;\n}\n", ""]);
 
 // exports
 
