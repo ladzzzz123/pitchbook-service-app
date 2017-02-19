@@ -26,7 +26,7 @@ module.exports = {
   },
   output: {
     path: './public/build/',
-    publicPath: '/frontend/build/',
+    publicPath: '/build/',
     filename: 'bundle.js',
     chunkFilename: '[name].bundle.js'
   },
