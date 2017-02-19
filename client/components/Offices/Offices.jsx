@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import getUniqueID from '../../utils/getUniqueID';
 import OfficeCard from './OfficeCard.jsx';
 
 import './Offices.less';
@@ -16,10 +17,24 @@ const Offices = props => (
       <div className="offices__add-action">
         <Button className="btn-addButton">Add New Office</Button>
       </div>
-      <div className="offices__amount">3 Offices</div>
+      <div className="offices__amount">
+        {props.offices.length}
+        {
+          props.offices.length === 1
+          ? ' Office'
+          : ' Offices'
+        }
+      </div>
     </div>
     <div className="offices__items">
-      <OfficeCard />
+      {
+        props.offices.map(office =>
+          <OfficeCard
+            key={getUniqueID()}
+            office={office}
+          />
+        )
+      }
     </div>
   </div>
 );

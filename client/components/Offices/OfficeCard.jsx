@@ -3,7 +3,7 @@ import { Grid, Row, Col, Button } from 'react-bootstrap';
 
 import './OfficeCard.less';
 
-const Offices = props => (
+const OfficeCard = props => (
   <div className="office">
     <Grid fluid>
       <Row>
@@ -11,25 +11,29 @@ const Offices = props => (
           <dl className="row">
             <dt className="col-sm-4">Address:</dt>
             <dd className="col-sm-8">
-              <div className="office__primary-hq">
-                <span className="glyphicon glyphicon-ok" />
-                &nbsp;Primary HQ
-              </div>
-              <div>901 Fifth Avenue</div>
-              <div>Suite 1200</div>
-              <div>Seattle, WA 98164</div>
-              <div>United States</div>
+              {
+                props.office.primary_hq
+                ? <div className="office__primary-hq">
+                  <span className="glyphicon glyphicon-ok" />
+                    &nbsp;Primary HQ
+                  </div>
+                : null
+              }
+              <div>{props.office.address_1}</div>
+              <div>{props.office.address_1}</div>
+              <div>{props.office.city}, {props.office.state} {props.office.postal_code}</div>
+              <div>{props.office.country}</div>
             </dd>
           </dl>
         </Col>
         <Col xs={12} sm={12} md={5} lg={4} className="no-padding-left no-padding-right">
           <dl className="row">
             <dt className="col-sm-4">Phone:</dt>
-            <dd className="col-sm-8">+1 (206) 623 - 1986</dd>
+            <dd className="col-sm-8">{props.office.phone}</dd>
             <dt className="col-sm-4">Fax:</dt>
-            <dd className="col-sm-8">+1 (206) 623 - 2708</dd>
+            <dd className="col-sm-8">{props.office.fax}</dd>
             <dt className="col-sm-4">Email:</dt>
-            <dd className="col-sm-8">info@pitchbook.com</dd>
+            <dd className="col-sm-8">{props.office.email}</dd>
           </dl>
         </Col>
         <Col xs={12} sm={12} md={2} lg={4} className="no-padding-left no-padding-right">
@@ -43,4 +47,4 @@ const Offices = props => (
   </div>
 );
 
-export default Offices;
+export default OfficeCard;

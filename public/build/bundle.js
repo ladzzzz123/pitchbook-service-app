@@ -1,5 +1,66 @@
 webpackJsonp([0],{
 
+/***/ "./client/actions/offices.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__ = __webpack_require__("./client/constants/AppConstants.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api__ = __webpack_require__("./client/api/index.js");
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = {
+  getAllOffices: function getAllOffices() {
+    return function (dispatch) {
+      dispatch({
+        type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].GET_OFFICES_REQUEST
+      });
+
+      __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].getAllOffices().then(function (data) {
+        console.log(data);
+        dispatch({
+          type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].GET_OFFICES_SUCCESS,
+          payload: {
+            items: data
+          }
+        });
+      }).catch(function (err) {
+        dispatch({
+          type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].GET_OFFICES_FAIL
+        });
+
+        dispatch({ type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].ADD_ERROR, error: err });
+      });
+    };
+  }
+};
+
+/***/ }),
+
+/***/ "./client/api/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__("./client/config/index.js");
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = {
+  getAllOffices: function getAllOffices() {
+    return new Promise(function (resolve, reject) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].host + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].api.offices.getAll).then(function (response) {
+        return resolve(response.data);
+      }).catch(function (error) {
+        return reject(error);
+      });
+    });
+  }
+};
+
+/***/ }),
+
 /***/ "./client/components/Header.jsx":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -111,7 +172,7 @@ if(true) {
 
 
 
-var Offices = function Offices(props) {
+var OfficeCard = function OfficeCard(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'div',
     { className: 'office' },
@@ -135,31 +196,35 @@ var Offices = function Offices(props) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'dd',
               { className: 'col-sm-8' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              props.office.primary_hq ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'office__primary-hq' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'glyphicon glyphicon-ok' }),
                 '\xA0Primary HQ'
+              ) : null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                props.office.address_1
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                '901 Fifth Avenue'
+                props.office.address_1
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                'Suite 1200'
+                props.office.city,
+                ', ',
+                props.office.state,
+                ' ',
+                props.office.postal_code
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                'Seattle, WA 98164'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                'United States'
+                props.office.country
               )
             )
           )
@@ -178,7 +243,7 @@ var Offices = function Offices(props) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'dd',
               { className: 'col-sm-8' },
-              '+1 (206) 623 - 1986'
+              props.office.phone
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'dt',
@@ -188,7 +253,7 @@ var Offices = function Offices(props) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'dd',
               { className: 'col-sm-8' },
-              '+1 (206) 623 - 2708'
+              props.office.fax
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'dt',
@@ -198,7 +263,7 @@ var Offices = function Offices(props) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'dd',
               { className: 'col-sm-8' },
-              'info@pitchbook.com'
+              props.office.email
             )
           )
         ),
@@ -225,7 +290,7 @@ var Offices = function Offices(props) {
   );
 };
 
-/* harmony default export */ __webpack_exports__["a"] = Offices;
+/* harmony default export */ __webpack_exports__["a"] = OfficeCard;
 
 /***/ }),
 
@@ -263,9 +328,11 @@ if(true) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/react.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__ = __webpack_require__("./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__OfficeCard_jsx__ = __webpack_require__("./client/components/Offices/OfficeCard.jsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Offices_less__ = __webpack_require__("./client/components/Offices/Offices.less");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Offices_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Offices_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_getUniqueID__ = __webpack_require__("./client/utils/getUniqueID.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__OfficeCard_jsx__ = __webpack_require__("./client/components/Offices/OfficeCard.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Offices_less__ = __webpack_require__("./client/components/Offices/Offices.less");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Offices_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Offices_less__);
+
 
 
 
@@ -307,13 +374,19 @@ var Offices = function Offices(props) {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'offices__amount' },
-        '3 Offices'
+        props.offices.length,
+        props.offices.length === 1 ? ' Office' : ' Offices'
       )
     ),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       { className: 'offices__items' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__OfficeCard_jsx__["a" /* default */], null)
+      props.offices.map(function (office) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__OfficeCard_jsx__["a" /* default */], {
+          key: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_getUniqueID__["a" /* default */])(),
+          office: office
+        });
+      })
     )
   );
 };
@@ -451,15 +524,34 @@ if(true) {
 
 /***/ }),
 
+/***/ "./client/config/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = {
+  host: 'http://localhost:3000',
+  api: {
+    offices: {
+      getAll: '/api/offices'
+    },
+    office: {
+      create: '/api/office/create',
+      update: '/api/office/update',
+      delete: '/api/office/delete'
+    }
+  }
+};
+
+/***/ }),
+
 /***/ "./client/constants/AppConstants.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = {
-  GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
-  GET_USERS_FAIL: 'GET_USERS_FAIL',
-  GET_USER_SUCCESS: 'GET_USER_SUCCESS',
-  GET_USER_FAIL: 'GET_USER_FAIL',
+  GET_OFFICES_REQUEST: 'GET_OFFICES_REQUEST',
+  GET_OFFICES_SUCCESS: 'GET_OFFICES_SUCCESS',
+  GET_OFFICES_FAIL: 'GET_OFFICES_FAIL',
   ADD_ERROR: 'ADD_ERROR',
   REMOVE_ERROR: 'REMOVE_ERROR'
 };
@@ -543,7 +635,10 @@ var App = function (_React$Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/react.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Offices_Offices__ = __webpack_require__("./client/components/Offices/Offices.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_redux__ = __webpack_require__("./node_modules/redux/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__("./node_modules/react-redux/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Offices_Offices__ = __webpack_require__("./client/components/Offices/Offices.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_offices__ = __webpack_require__("./client/actions/offices.js");
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -551,6 +646,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
 
 
 
@@ -565,16 +663,41 @@ var OfficesContainer = function (_React$Component) {
   }
 
   _createClass(OfficesContainer, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.actions.getAllOffices();
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_Offices_Offices__["a" /* default */], null);
+      console.log(this.props);
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Offices_Offices__["a" /* default */], {
+        offices: this.props.offices
+      });
     }
   }]);
 
   return OfficesContainer;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["a"] = OfficesContainer;
+function mapStateToProps(state, ownProps) {
+  var offices = state.offices,
+      errors = state.errors;
+
+
+  return {
+    offices: offices.items,
+    errors: errors
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_redux__["bindActionCreators"])(__WEBPACK_IMPORTED_MODULE_4__actions_offices__["a" /* default */], dispatch)
+  };
+}
+
+/* harmony default export */ __webpack_exports__["a"] = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, mapDispatchToProps)(OfficesContainer);
 
 /***/ }),
 
@@ -674,15 +797,51 @@ function errors() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__("./node_modules/redux/es/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_redux__ = __webpack_require__("./node_modules/react-router-redux/lib/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_router_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__errors__ = __webpack_require__("./client/reducers/errors.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__offices__ = __webpack_require__("./client/reducers/offices.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__errors__ = __webpack_require__("./client/reducers/errors.js");
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
   routing: __WEBPACK_IMPORTED_MODULE_1_react_router_redux__["routerReducer"],
-  errors: __WEBPACK_IMPORTED_MODULE_2__errors__["a" /* default */]
+  offices: __WEBPACK_IMPORTED_MODULE_2__offices__["a" /* default */],
+  errors: __WEBPACK_IMPORTED_MODULE_3__errors__["a" /* default */]
 });
+
+/***/ }),
+
+/***/ "./client/reducers/offices.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__ = __webpack_require__("./client/constants/AppConstants.js");
+/* harmony export (immutable) */ __webpack_exports__["a"] = projects;
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+var initialState = {
+  items: []
+};
+
+function projects() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+
+    case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].GET_OFFICES_SUCCESS:
+      return _extends({}, state, action.payload);
+
+    case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].GET_OFFICES_FAIL:
+      return _extends({}, state, { items: [] });
+
+    default:
+      return state;
+  }
+}
 
 /***/ }),
 
@@ -734,6 +893,21 @@ if(true) {
 
 /***/ }),
 
+/***/ "./client/utils/getUniqueID.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var lastId = 0;
+
+/* harmony default export */ __webpack_exports__["a"] = function () {
+  var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'id';
+
+  lastId += 1;
+  return '' + prefix + lastId;
+};
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/Header.less":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -757,7 +931,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".office {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.office__primary-hq {\n  font-weight: bold;\n}\n.office dl dt {\n  text-align: right;\n}\n@media (max-width: 992px) {\n  .office__actions {\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .office dl dt {\n    text-align: left;\n  }\n}\n", ""]);
+exports.push([module.i, ".office {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n  margin-top: 15px;\n}\n.office__primary-hq {\n  font-weight: bold;\n}\n.office dl dt {\n  text-align: right;\n}\n@media (max-width: 992px) {\n  .office__actions {\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .office dl dt {\n    text-align: left;\n  }\n}\n", ""]);
 
 // exports
 
@@ -772,7 +946,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/**\n * HR dotted\n * */\n.offices {\n  padding-left: 5%;\n}\n.offices__header {\n  color: #53687e;\n  font-size: 30px;\n  font-weight: normal;\n  padding-top: 20px;\n  padding-bottom: 15px;\n  text-transform: uppercase;\n}\n.offices__header--grey {\n  color: #b9bfc5;\n}\n.offices__add-action {\n  float: left;\n}\n.offices__amount {\n  float: right;\n}\n.offices__items {\n  margin-top: 15px;\n}\n.offices hr.dotted {\n  border-top: 1px dotted #dcdfe2;\n  margin: 40px 0;\n}\n", ""]);
+exports.push([module.i, "/**\n * HR dotted\n * */\n.offices {\n  padding-left: 5%;\n}\n.offices__header {\n  color: #53687e;\n  font-size: 30px;\n  font-weight: normal;\n  padding-top: 20px;\n  padding-bottom: 15px;\n  text-transform: uppercase;\n}\n.offices__header--grey {\n  color: #b9bfc5;\n}\n.offices__add-action {\n  float: left;\n}\n.offices__amount {\n  float: right;\n}\n.offices hr.dotted {\n  border-top: 1px dotted #dcdfe2;\n  margin: 40px 0;\n}\n", ""]);
 
 // exports
 

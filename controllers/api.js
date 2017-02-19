@@ -14,20 +14,16 @@ module.exports = {
 
   getAllOffices: function(req, res, next) {
     Office.find({isDelete: false}, function(err, offices) {
-      if (err) return res.send({result: 'failed', description: 'Something has gone wrong'});
+      if (err) return res.status(500).send(err);
 
-      res.send({
-        result: 'success',
-        data: offices
-      });
+      res.send(offices);
     })
   },
   officeCreate: function(req, res, next) {
     var newOffice = Office(req.body);
 
     newOffice.save(function(err) {
-      console.log(err);
-      if (err) return res.send({result: 'failed', description: 'The office hasn\'t been created'});
+      if (err) return res.status(500).send(err);
 
       res.send({result: 'success'});
     });
@@ -37,12 +33,9 @@ module.exports = {
     delete req.body.id;
 
     Office.findByIdAndUpdate(userID, req.body, function(err, office) {
-      if (err) return res.send({result: 'failed', description: 'The office hasn\'t been updated'});
+      if (err) return res.status(500).send(err);
 
-      res.send({
-        result: 'success',
-        data: office
-      });
+      res.send(office);
     });
   },
   officeDelete: function(req, res, next) {
@@ -53,12 +46,9 @@ module.exports = {
       isDelete: true,
       reasonOfDelete: reasonOfDelete
     }, function(err, office) {
-      if (err) return res.send({result: 'failed', description: 'The office hasn\'t been deleted'});
+      if (err) return res.status(500).send(err);
 
-      res.send({
-        result: 'success',
-        data: office
-      });
+      res.send(office);
     });
   }
 };
