@@ -138,26 +138,27 @@ var Offices = function Offices(props) {
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'office__primary-hq' },
-                'Primary HQ'
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'glyphicon glyphicon-ok' }),
+                '\xA0Primary HQ'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'office__stree-address-1' },
+                null,
                 '901 Fifth Avenue'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'office__stree-address-2' },
+                null,
                 'Suite 1200'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'office__postal-data' },
+                null,
                 'Seattle, WA 98164'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'office__postal-data' },
+                null,
                 'United States'
               )
             )
@@ -381,8 +382,9 @@ var Header = function Header(props) {
         { className: 'sidebar__common-nav' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["NavItem"],
-          { eventKey: 1, href: '#', className: 'checked' },
-          'Basic info'
+          { eventKey: 1, href: '#' },
+          'Basic info \xA0',
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'glyphicon glyphicon-ok' })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["NavItem"],
@@ -576,13 +578,6 @@ var OfficesContainer = function (_React$Component) {
 
 /***/ }),
 
-/***/ "./client/img/checked-icon.jpg":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "checked-icon.jpg";
-
-/***/ }),
-
 /***/ "./client/img/logo-2.png":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -762,7 +757,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".office {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.office dl dt {\n  text-align: right;\n}\n@media (max-width: 992px) {\n  .office__actions {\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .office dl dt {\n    text-align: left;\n  }\n}\n", ""]);
+exports.push([module.i, ".office {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.office__primary-hq {\n  font-weight: bold;\n}\n.office dl dt {\n  text-align: right;\n}\n@media (max-width: 992px) {\n  .office__actions {\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .office dl dt {\n    text-align: left;\n  }\n}\n", ""]);
 
 // exports
 
@@ -792,7 +787,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".sidebar {\n  border-radius: 2px;\n  border: none;\n  background-color: transparent;\n}\n.sidebar__logo {\n  width: 100%;\n  height: 140px;\n  background: url(" + __webpack_require__("./client/img/logo-2.png") + ") no-repeat center center #175786;\n}\n.sidebar .navbar-header {\n  color: #596d83;\n  width: 100%;\n  padding: 15px;\n  text-transform: uppercase;\n}\n.sidebar .navbar-nav li a:hover {\n  color: #4b5767 !important;\n}\n.sidebar__common-nav li a {\n  display: inline-block;\n  color: #8c96a3;\n  padding-top: 7px;\n  padding-bottom: 7px;\n}\n.sidebar__common-nav li.checked a {\n  position: relative;\n  color: #4b5767;\n}\n.sidebar__common-nav li.checked a:after {\n  content: '';\n  position: absolute;\n  top: 50%;\n  left: 100%;\n  display: block;\n  width: 15px;\n  height: 12px;\n  margin-top: -6px;\n  background: url(" + __webpack_require__("./client/img/checked-icon.jpg") + ");\n}\n.sidebar__common-nav li.active a {\n  position: relative;\n  color: #4b5767 !important;\n  font-weight: bold;\n  background-color: transparent !important;\n}\n.sidebar__common-nav li.active a:after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: block;\n  width: 2px;\n  height: 100%;\n  background: #2888d1;\n}\n.sidebar__company-nav {\n  margin-top: 10px;\n}\n.sidebar__company-nav li a {\n  color: #596d83;\n  text-transform: uppercase;\n  border-bottom: 1px solid #d8dde3;\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.sidebar__company-nav li:first-child {\n  border-top: 1px solid #d8dde3;\n}\n@media (min-width: 768px) {\n  .sidebar .navbar-header .navbar-brand {\n    float: none;\n    display: block;\n    text-align: center;\n    margin: 0 auto;\n  }\n  .sidebar .container {\n    width: auto;\n    padding-left: 0;\n    padding-right: 0;\n  }\n  .sidebar .navbar-collapse {\n    padding: 0;\n    max-height: none;\n    background-color: transparent;\n  }\n  .sidebar ul {\n    float: none;\n    display: block;\n  }\n  .sidebar ul li {\n    float: none;\n    display: block;\n  }\n}\n@media (max-width: 768px) {\n  .sidebar__logo {\n    display: none;\n  }\n  .sidebar .navbar-header {\n    float: left;\n    width: auto;\n  }\n}\n", ""]);
+exports.push([module.i, ".sidebar {\n  border-radius: 2px;\n  border: none;\n  background-color: transparent;\n}\n.sidebar__logo {\n  width: 100%;\n  height: 140px;\n  background: url(" + __webpack_require__("./client/img/logo-2.png") + ") no-repeat center center #175786;\n}\n.sidebar .navbar-header {\n  color: #596d83;\n  width: 100%;\n  padding: 15px;\n  text-transform: uppercase;\n}\n.sidebar .navbar-nav li a:hover {\n  color: #4b5767 !important;\n}\n.sidebar__common-nav li a {\n  display: inline-block;\n  color: #8c96a3;\n  padding-top: 7px;\n  padding-bottom: 7px;\n}\n.sidebar__common-nav li.active a {\n  position: relative;\n  color: #4b5767 !important;\n  font-weight: bold;\n  background-color: transparent !important;\n}\n.sidebar__common-nav li.active a:after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: block;\n  width: 2px;\n  height: 100%;\n  background: #2888d1;\n}\n.sidebar__company-nav {\n  margin-top: 10px;\n}\n.sidebar__company-nav li a {\n  color: #596d83;\n  text-transform: uppercase;\n  border-bottom: 1px solid #d8dde3;\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.sidebar__company-nav li:first-child {\n  border-top: 1px solid #d8dde3;\n}\n@media (min-width: 768px) {\n  .sidebar .navbar-header .navbar-brand {\n    float: none;\n    display: block;\n    text-align: center;\n    margin: 0 auto;\n  }\n  .sidebar .container {\n    width: auto;\n    padding-left: 0;\n    padding-right: 0;\n  }\n  .sidebar .navbar-collapse {\n    padding: 0;\n    max-height: none;\n    background-color: transparent;\n  }\n  .sidebar ul {\n    float: none;\n    display: block;\n  }\n  .sidebar ul li {\n    float: none;\n    display: block;\n  }\n}\n@media (max-width: 768px) {\n  .sidebar__logo {\n    display: none;\n  }\n  .sidebar .navbar-header {\n    float: left;\n    width: auto;\n  }\n}\n", ""]);
 
 // exports
 

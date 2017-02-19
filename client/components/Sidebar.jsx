@@ -10,7 +10,10 @@ const Header = props => (
     <Navbar.Toggle />
     <Navbar.Collapse>
       <Nav className="sidebar__common-nav">
-        <NavItem eventKey={1} href="#" className="checked">Basic info</NavItem>
+        <NavItem eventKey={1} href="#">
+          Basic info
+          &nbsp;<span className="glyphicon glyphicon-ok" />
+        </NavItem>
         <NavItem eventKey={2} href="#/offices" className="active">Offices</NavItem>
         <NavItem eventKey={3} href="#">Competitors</NavItem>
       </Nav>
