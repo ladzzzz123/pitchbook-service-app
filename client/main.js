@@ -9,6 +9,8 @@ import configureStore from './store/configureStore';
 import App from './containers/App';
 import Offices from './containers/Offices';
 
+import './styles/main.less';
+
 injectTapEventPlugin();
 const store = configureStore();
 
