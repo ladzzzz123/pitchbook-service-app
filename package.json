@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "server": "node server.js",
-    "watch": "NODE_ENV=development webpack --watch",
-    "prod-build": "NODE_ENV=production webpack"
+    "frontend-watch": "NODE_ENV=development webpack --watch",
+    "frontend-prod-build": "NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
