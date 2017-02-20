@@ -51,7 +51,11 @@ webpackJsonp([0],{
   getAllOffices: function getAllOffices() {
     return new Promise(function (resolve, reject) {
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].host + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].api.offices.getAll).then(function (response) {
-        return resolve(response.data);
+        if (response.data.status) {
+          resolve(response.data.offices);
+        } else {
+          reject(response.description);
+        }
       }).catch(function (error) {
         return reject(error);
       });

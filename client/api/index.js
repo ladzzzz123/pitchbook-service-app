@@ -5,7 +5,13 @@ export default {
   getAllOffices() {
     return new Promise((resolve, reject) => {
       axios.get(`${config.host}${config.api.offices.getAll}`)
-      .then(response => resolve(response.data))
+      .then((response) => {
+        if (response.data.status) {
+          resolve(response.data.offices);
+        } else {
+          reject(response.description);
+        }
+      })
       .catch(error => reject(error));
     });
   }

@@ -14,18 +14,21 @@ module.exports = {
 
   getAllOffices: function(req, res, next) {
     Office.find({isDelete: false}, function(err, offices) {
-      if (err) return res.status(500).send(err);
+      if (err) return res.send({status: false, error: err});
 
-      res.send(offices);
+      res.send({
+        status: true,
+        offices: offices
+      });
     })
   },
   officeCreate: function(req, res, next) {
     var newOffice = Office(req.body);
 
     newOffice.save(function(err) {
-      if (err) return res.status(500).send(err);
+      if (err) return res.send({status: false, description: 'The office hasn\'t been created'});
 
-      res.send({result: 'success'});
+      res.send({status: true});
     });
   },
   officeUpdate: function(req, res, next) {
@@ -33,9 +36,9 @@ module.exports = {
     delete req.body.id;
 
     Office.findByIdAndUpdate(userID, req.body, function(err, office) {
-      if (err) return res.status(500).send(err);
+      if (err) return res.send({status: false, description: 'The office hasn\'t been updated'});
 
-      res.send(office);
+      res.send({status: true});
     });
   },
   officeDelete: function(req, res, next) {
@@ -46,9 +49,9 @@ module.exports = {
       isDelete: true,
       reasonOfDelete: reasonOfDelete
     }, function(err, office) {
-      if (err) return res.status(500).send(err);
+      if (err) return res.send({status: false, description: 'The office hasn\'t been deleted'});
 
-      res.send(office);
+      res.send({status: true});
     });
   }
 };
