@@ -38,8 +38,8 @@ const OfficeCard = props => (
         </Col>
         <Col xs={12} sm={12} md={2} lg={4} className="no-padding-left no-padding-right">
           <div className="office__actions">
-            <Button className="btn-removeButton btn-removeButton--oficeCard">Remove</Button>
-            <Button className="btn-editButton btn-editButton--oficeCard">Edit</Button>
+            <Button className="btn-default--officeCard btn-default--small">Remove</Button>
+            <Button bsStyle="primary" className="btn-primary--officeCard btn-default--small">Edit</Button>
           </div>
         </Col>
       </Row>

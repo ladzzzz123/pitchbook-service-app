@@ -279,12 +279,12 @@ var OfficeCard = function OfficeCard(props) {
             { className: 'office__actions' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
-              { className: 'btn-removeButton btn-removeButton--oficeCard' },
+              { className: 'btn-default--officeCard btn-default--small' },
               'Remove'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
-              { className: 'btn-editButton btn-editButton--oficeCard' },
+              { bsStyle: 'primary', className: 'btn-primary--officeCard btn-default--small' },
               'Edit'
             )
           )
@@ -348,49 +348,86 @@ var Offices = function Offices(props) {
     'div',
     { className: 'offices' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'h1',
-      { className: 'offices__header' },
-      'Offices ',
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Grid"],
+      { fluid: true },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'span',
-        { className: 'offices__header--grey' },
-        '| Company Info'
-      )
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { className: 'offices_description' },
-      'Updating your location and contact informationhelps you appeal to regional investorsand service providers'
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'dotted' }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { className: 'clearfix' },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'offices__add-action' },
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Row"],
+        null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
-          { className: 'btn-addButton' },
-          'Add New Office'
+          __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+          { xs: 12, sm: 12, md: 12, lg: 10, className: 'no-padding-left no-padding-right' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h1',
+            { className: 'offices__header' },
+            'Offices ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'span',
+              { className: 'offices__header--grey' },
+              '| Company Info'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'offices_description' },
+            'Updating your location and contact informationhelps you appeal to regional investorsand service providers'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'dotted' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'clearfix' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'offices__add-action' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+                { className: 'btn-default btn-default--bold' },
+                'Add New Office'
+              )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'offices__amount' },
+              props.offices.length,
+              props.offices.length === 1 ? ' Office' : ' Offices'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'offices__items' },
+            props.offices.map(function (office) {
+              return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__OfficeCard_jsx__["a" /* default */], {
+                key: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_getUniqueID__["a" /* default */])(),
+                office: office
+              });
+            })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'dotted' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'offices__actions clearfix' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+              { className: 'offices__back btn-default btn-default--bold btn-default--strong pull-left' },
+              'Back'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+              { className: 'offices__continue btn-primary btn-primary--offices-continue pull-right' },
+              'Continue'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Button"],
+              { className: 'offices__skip btn-default btn-default--bold btn-default--strong pull-right' },
+              'Skip this step'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'offices__provide-comments pull-left' },
+              'Provide additional comments'
+            )
+          )
         )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'offices__amount' },
-        props.offices.length,
-        props.offices.length === 1 ? ' Office' : ' Offices'
       )
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { className: 'offices__items' },
-      props.offices.map(function (office) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__OfficeCard_jsx__["a" /* default */], {
-          key: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_getUniqueID__["a" /* default */])(),
-          office: office
-        });
-      })
     )
   );
 };
@@ -705,6 +742,13 @@ function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./client/img/add-icon.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "add-icon.jpg";
+
+/***/ }),
+
 /***/ "./client/img/logo-2.png":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -935,7 +979,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".office {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n  margin-top: 15px;\n}\n.office__primary-hq {\n  font-weight: bold;\n}\n.office dl dt {\n  text-align: right;\n}\n@media (max-width: 992px) {\n  .office__actions {\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .office dl dt {\n    text-align: left;\n  }\n}\n", ""]);
+exports.push([module.i, ".office {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n  margin-top: 15px;\n}\n.office__primary-hq {\n  font-weight: bold;\n}\n.office__actions {\n  text-align: right;\n}\n.office dl dt {\n  text-align: right;\n}\n@media (max-width: 992px) {\n  .office__actions {\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .office dl dt {\n    text-align: left;\n  }\n}\n", ""]);
 
 // exports
 
@@ -950,7 +994,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/**\n * HR dotted\n * */\n.offices {\n  padding-left: 5%;\n}\n.offices__header {\n  color: #53687e;\n  font-size: 30px;\n  font-weight: normal;\n  padding-top: 20px;\n  padding-bottom: 15px;\n  text-transform: uppercase;\n}\n.offices__header--grey {\n  color: #b9bfc5;\n}\n.offices__add-action {\n  float: left;\n}\n.offices__amount {\n  float: right;\n}\n.offices hr.dotted {\n  border-top: 1px dotted #dcdfe2;\n  margin: 40px 0;\n}\n", ""]);
+exports.push([module.i, "/**\n * HR dotted\n * */\n.offices {\n  padding-left: 5%;\n}\n.offices__header {\n  color: #53687e;\n  font-size: 30px;\n  font-weight: normal;\n  padding-top: 20px;\n  padding-bottom: 15px;\n  text-transform: uppercase;\n}\n.offices__header--grey {\n  color: #b9bfc5;\n}\n.offices__add-action {\n  float: left;\n}\n.offices__amount {\n  float: right;\n}\n.offices__actions {\n  margin-bottom: 50px;\n}\n.offices__provide-comments {\n  padding: 8px 0;\n  margin-left: 70px;\n}\n.offices__provide-comments:before {\n  content: '';\n  display: inline-block;\n  width: 15px;\n  height: 15px;\n  margin: 0 5px -2px 0;\n  background: url(" + __webpack_require__("./client/img/add-icon.jpg") + ") no-repeat;\n}\n.offices hr.dotted {\n  border-top: 1px dotted #dcdfe2;\n  margin: 40px 0;\n}\n@media (max-width: 900px) {\n  .offices__provide-comments {\n    float: none !important;\n    margin: 50px 0 0 0;\n  }\n}\n@media (max-width: 500px) {\n  .offices__skip {\n    float: left !important;\n    clear: left;\n  }\n  .offices__back {\n    margin: 0 5px 5px 0;\n  }\n  .offices__provide-comments {\n    margin: 90px 0 0 0;\n  }\n}\n", ""]);
 
 // exports
 
@@ -980,7 +1024,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/**\n * HR dotted\n * */\n/**\n * Main\n * */\nbody {\n  color: #5e7287;\n  background: #f7f8fa;\n}\n.no-padding-left {\n  padding-left: 0 !important;\n}\n.no-padding-right {\n  padding-right: 0 !important;\n}\n/**\n * Main Grid\n * */\n.app-grid {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 2px;\n  background: #fff;\n  margin-left: 0;\n  margin-right: 0;\n}\n.app-grid__sidebar {\n  background: #e9eff5;\n}\n/**\n * Buttons\n * */\n.btn-default {\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.btn-default:hover {\n  background-color: #ffffff;\n}\n.btn-addButton {\n  color: #566d86;\n  font-weight: bold;\n  padding: 5px 15px;\n}\n.btn-addButton:hover {\n  color: #566d86;\n}\n.btn-removeButton {\n  color: #5e7287;\n  padding: 2px 15px;\n}\n.btn-removeButton:hover {\n  color: #5e7287;\n}\n.btn-removeButton--oficeCard {\n  margin: 0 5px 5px 0;\n}\n.btn-editButton {\n  color: #fff;\n  font-weight: bold;\n  padding: 3px 15px;\n  border: 0;\n  background: #2888d1;\n}\n.btn-editButton:hover {\n  color: #fff;\n  background: #1b7dc7;\n}\n.btn-editButton--oficeCard {\n  vertical-align: top;\n}\n", ""]);
+exports.push([module.i, "/**\n * HR dotted\n * */\n/**\n * Main\n * */\nbody {\n  color: #5e7287;\n  background: #f7f8fa;\n}\n.no-padding-left {\n  padding-left: 0 !important;\n}\n.no-padding-right {\n  padding-right: 0 !important;\n}\n/**\n * Main Grid\n * */\n.app-grid {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 2px;\n  background: #fff;\n  margin-left: 0;\n  margin-right: 0;\n}\n.app-grid__sidebar {\n  background: #e9eff5;\n}\n/**\n * Buttons\n * */\n.btn-default {\n  color: #566d86;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.btn-default:hover,\n.btn-default:focus,\n.btn-default:active {\n  background-color: #ffffff;\n}\n.btn-default--bold {\n  font-weight: bold;\n}\n.btn-default--small {\n  padding: 2px 15px;\n}\n.btn-default--officeCard {\n  vertical-align: top;\n  margin: 0 0 5px 0;\n}\n.btn-default--strong {\n  border: 1px solid #566d86;\n}\n.btn-default--strong:hover,\n.btn-default--strong:focus,\n.btn-default--strong:active {\n  border: 1px solid #416185;\n}\n.btn-primary {\n  color: #fff;\n  border: 1px solid transparent;\n  border-radius: 2px;\n  background: #2888d1;\n}\n.btn-primary:hover,\n.btn-primary:focus,\n.btn-primary:active {\n  color: #fff;\n  background: #1b7dc7;\n}\n.btn-primary--small {\n  padding: 2px 15px;\n}\n.btn-primary--officeCard {\n  font-weight: bold;\n  margin-left: 5px;\n}\n.btn-primary--offices-continue {\n  margin: 0 0 5px 10px;\n}\n", ""]);
 
 // exports
 
