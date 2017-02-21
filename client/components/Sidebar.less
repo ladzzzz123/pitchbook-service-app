@@ -18,6 +18,10 @@
     text-transform: uppercase;
   }
 
+  .navbar-default {
+    border: none;
+  }
+
   .navbar-nav {
     li {
       a {
@@ -94,7 +98,7 @@
         padding-right: 0;
       }
 
-      .navbar-collapse {
+      .navbar-default {
         padding: 0;
         max-height: none;
         background-color: transparent;
@@ -110,14 +114,10 @@
       }
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 560px) {
     & {
       &__logo {
-        display: none;
-      }
-      .navbar-header {
-        float: left;
-        width: auto;
+        background-size: 70%;
       }
     }
   }

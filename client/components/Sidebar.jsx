@@ -4,11 +4,10 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import './Sidebar.less';
 
 const Header = props => (
-  <Navbar className="sidebar">
+  <Navbar id="sidebarLeft" className="sidebar sidebar-offcanvas" role="navigation">
     <div className="sidebar__logo" />
     <Navbar.Header>Company Info</Navbar.Header>
-    <Navbar.Toggle />
-    <Navbar.Collapse>
+    <Navbar>
       <Nav className="sidebar__common-nav">
         <NavItem eventKey={1} href="#">
           Basic info
@@ -22,7 +21,7 @@ const Header = props => (
         <NavItem eventKey={5} href="#">Deals</NavItem>
         <NavItem eventKey={6} href="#">Financials</NavItem>
       </Nav>
-    </Navbar.Collapse>
+    </Navbar>
   </Navbar>
 );
 

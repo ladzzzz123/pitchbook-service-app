@@ -18,9 +18,6 @@ body {
  * Main Grid
  * */
 .app-grid {
-  display: -ms-flex;
-  display: -webkit-flex;
-  display: flex;
   padding: 2px;
   background: #fff;
   margin-left: 0;
@@ -28,6 +25,12 @@ body {
 
   &__sidebar {
     background: #e9eff5;
+  }
+
+  .row-offcanvas {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
   }
 }
 
@@ -85,6 +88,63 @@ body {
     margin-left: 5px;
   }
   &--offices-continue {
-    margin: 0 0 5px 10px; 
+    margin: 0 0 5px 10px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .app-grid__sidebar {
+    background: transparent;
+  }
+  .row-offcanvas {
+    display: block !important;
+    position: relative;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+  }
+
+  .row-offcanvas-left #sidebarLeft {
+    left: -90%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 30%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    z-index: 200;
+    top: 0;
+    width: 90%;
+    margin-left: 10px;
+  }
+  #offcanvasleft,#offcanvasright{margin-top:10px;}
+}
+@media screen and (max-width: 510px) {
+  .row-offcanvas-left #sidebarLeft {
+    left: -120%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 40%;
+  }
+
+  .sidebar-offcanvas {
+    width: 120%;
+  }
+}
+@media screen and (max-width: 420px) {
+  .row-offcanvas-left #sidebarLeft {
+    left: -150%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%;
+  }
+
+  .sidebar-offcanvas {
+    width: 150%;
   }
 }
