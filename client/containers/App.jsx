@@ -9,13 +9,18 @@ class App extends React.Component {
       <div>
         <Header />
         <Grid fluid>
-          <Row className="show-grid app-grid">
-            <Col xs={3} sm={3} md={3} lg={2} className="no-padding-left no-padding-right app-grid__sidebar">
-              <Sidebar />
-            </Col>
-            <Col xs={9} sm={9} md={9} lg={10} className="app-grid__content">
-              <div>{this.props.children}</div>
-            </Col>
+          <Row className="show-grid app-grid row-offcanvas row-offcanvas-left">
+            <Row className="row-offcanvas row-offcanvas-right">
+              <Col
+                xs={4} sm={2}
+                className="no-padding-left no-padding-right app-grid__sidebar"
+              >
+                <Sidebar />
+              </Col>
+              <Col xs={11} sm={8} className="app-grid__content">
+                <div>{this.props.children}</div>
+              </Col>
+            </Row>
           </Row>
         </Grid>
       </div>

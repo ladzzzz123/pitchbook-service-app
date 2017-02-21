@@ -79,12 +79,31 @@ webpackJsonp([0],{
 
 
 var Header = function Header(props) {
+  function handlerOffCanvasLeft() {
+    document.querySelector('.row-offcanvas-left').classList.toggle('active');
+  }
+
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Navbar"],
     { collapseOnSelect: true, fluid: true, className: 'header' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Navbar"].Header,
       null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'p',
+        { className: 'pull-left visible-xs' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          {
+            id: 'offcanvasleft',
+            className: 'btn btn-xs',
+            type: 'button',
+            'data-toggle': 'offcanvasleft',
+            onClick: handlerOffCanvasLeft
+          },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'glyphicon glyphicon-chevron-left' })
+        )
+      ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Navbar"].Brand,
         null,
@@ -480,16 +499,15 @@ if(true) {
 var Header = function Header(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Navbar"],
-    { className: 'sidebar' },
+    { id: 'sidebarLeft', className: 'sidebar sidebar-offcanvas', role: 'navigation' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'sidebar__logo' }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Navbar"].Header,
       null,
       'Company Info'
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Navbar"].Toggle, null),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Navbar"].Collapse,
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Navbar"],
       null,
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Nav"],
@@ -642,19 +660,26 @@ var App = function (_React$Component) {
           { fluid: true },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Row"],
-            { className: 'show-grid app-grid' },
+            { className: 'show-grid app-grid row-offcanvas row-offcanvas-left' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-              { xs: 3, sm: 3, md: 3, lg: 2, className: 'no-padding-left no-padding-right app-grid__sidebar' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Sidebar__["a" /* default */], null)
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-              { xs: 9, sm: 9, md: 9, lg: 10, className: 'app-grid__content' },
+              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Row"],
+              { className: 'row-offcanvas row-offcanvas-right' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                this.props.children
+                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+                {
+                  xs: 4, sm: 2,
+                  className: 'no-padding-left no-padding-right app-grid__sidebar'
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Sidebar__["a" /* default */], null)
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+                { xs: 11, sm: 8, className: 'app-grid__content' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'div',
+                  null,
+                  this.props.children
+                )
               )
             )
           )
@@ -1009,7 +1034,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".sidebar {\n  border-radius: 2px;\n  border: none;\n  background-color: transparent;\n}\n.sidebar__logo {\n  width: 100%;\n  height: 140px;\n  background: url(" + __webpack_require__("./client/img/logo-2.png") + ") no-repeat center center #175786;\n}\n.sidebar .navbar-header {\n  color: #596d83;\n  width: 100%;\n  padding: 15px;\n  text-transform: uppercase;\n}\n.sidebar .navbar-nav li a:hover {\n  color: #4b5767 !important;\n}\n.sidebar__common-nav li a {\n  display: inline-block;\n  color: #8c96a3;\n  padding-top: 7px;\n  padding-bottom: 7px;\n}\n.sidebar__common-nav li.active a {\n  position: relative;\n  color: #4b5767 !important;\n  font-weight: bold;\n  background-color: transparent !important;\n}\n.sidebar__common-nav li.active a:after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: block;\n  width: 2px;\n  height: 100%;\n  background: #2888d1;\n}\n.sidebar__company-nav {\n  margin-top: 10px;\n}\n.sidebar__company-nav li a {\n  color: #596d83;\n  text-transform: uppercase;\n  border-bottom: 1px solid #d8dde3;\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.sidebar__company-nav li:first-child {\n  border-top: 1px solid #d8dde3;\n}\n@media (min-width: 768px) {\n  .sidebar .navbar-header .navbar-brand {\n    float: none;\n    display: block;\n    text-align: center;\n    margin: 0 auto;\n  }\n  .sidebar .container {\n    width: auto;\n    padding-left: 0;\n    padding-right: 0;\n  }\n  .sidebar .navbar-collapse {\n    padding: 0;\n    max-height: none;\n    background-color: transparent;\n  }\n  .sidebar ul {\n    float: none;\n    display: block;\n  }\n  .sidebar ul li {\n    float: none;\n    display: block;\n  }\n}\n@media (max-width: 768px) {\n  .sidebar__logo {\n    display: none;\n  }\n  .sidebar .navbar-header {\n    float: left;\n    width: auto;\n  }\n}\n", ""]);
+exports.push([module.i, ".sidebar {\n  border-radius: 2px;\n  border: none;\n  background-color: transparent;\n}\n.sidebar__logo {\n  width: 100%;\n  height: 140px;\n  background: url(" + __webpack_require__("./client/img/logo-2.png") + ") no-repeat center center #175786;\n}\n.sidebar .navbar-header {\n  color: #596d83;\n  width: 100%;\n  padding: 15px;\n  text-transform: uppercase;\n}\n.sidebar .navbar-default {\n  border: none;\n}\n.sidebar .navbar-nav li a:hover {\n  color: #4b5767 !important;\n}\n.sidebar__common-nav li a {\n  display: inline-block;\n  color: #8c96a3;\n  padding-top: 7px;\n  padding-bottom: 7px;\n}\n.sidebar__common-nav li.active a {\n  position: relative;\n  color: #4b5767 !important;\n  font-weight: bold;\n  background-color: transparent !important;\n}\n.sidebar__common-nav li.active a:after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: block;\n  width: 2px;\n  height: 100%;\n  background: #2888d1;\n}\n.sidebar__company-nav {\n  margin-top: 10px;\n}\n.sidebar__company-nav li a {\n  color: #596d83;\n  text-transform: uppercase;\n  border-bottom: 1px solid #d8dde3;\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.sidebar__company-nav li:first-child {\n  border-top: 1px solid #d8dde3;\n}\n@media (min-width: 768px) {\n  .sidebar .navbar-header .navbar-brand {\n    float: none;\n    display: block;\n    text-align: center;\n    margin: 0 auto;\n  }\n  .sidebar .container {\n    width: auto;\n    padding-left: 0;\n    padding-right: 0;\n  }\n  .sidebar .navbar-default {\n    padding: 0;\n    max-height: none;\n    background-color: transparent;\n  }\n  .sidebar ul {\n    float: none;\n    display: block;\n  }\n  .sidebar ul li {\n    float: none;\n    display: block;\n  }\n}\n@media (max-width: 560px) {\n  .sidebar__logo {\n    background-size: 70%;\n  }\n}\n", ""]);
 
 // exports
 
@@ -1024,7 +1049,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/**\n * HR dotted\n * */\n/**\n * Main\n * */\nbody {\n  color: #5e7287;\n  background: #f7f8fa;\n}\n.no-padding-left {\n  padding-left: 0 !important;\n}\n.no-padding-right {\n  padding-right: 0 !important;\n}\n/**\n * Main Grid\n * */\n.app-grid {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n  padding: 2px;\n  background: #fff;\n  margin-left: 0;\n  margin-right: 0;\n}\n.app-grid__sidebar {\n  background: #e9eff5;\n}\n/**\n * Buttons\n * */\n.btn-default {\n  color: #566d86;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.btn-default:hover,\n.btn-default:focus,\n.btn-default:active {\n  background-color: #ffffff;\n}\n.btn-default--bold {\n  font-weight: bold;\n}\n.btn-default--small {\n  padding: 2px 15px;\n}\n.btn-default--officeCard {\n  vertical-align: top;\n  margin: 0 0 5px 0;\n}\n.btn-default--strong {\n  border: 1px solid #566d86;\n}\n.btn-default--strong:hover,\n.btn-default--strong:focus,\n.btn-default--strong:active {\n  border: 1px solid #416185;\n}\n.btn-primary {\n  color: #fff;\n  border: 1px solid transparent;\n  border-radius: 2px;\n  background: #2888d1;\n}\n.btn-primary:hover,\n.btn-primary:focus,\n.btn-primary:active {\n  color: #fff;\n  background: #1b7dc7;\n}\n.btn-primary--small {\n  padding: 2px 15px;\n}\n.btn-primary--officeCard {\n  font-weight: bold;\n  margin-left: 5px;\n}\n.btn-primary--offices-continue {\n  margin: 0 0 5px 10px;\n}\n", ""]);
+exports.push([module.i, "/**\n * HR dotted\n * */\n/**\n * Main\n * */\nbody {\n  color: #5e7287;\n  background: #f7f8fa;\n}\n.no-padding-left {\n  padding-left: 0 !important;\n}\n.no-padding-right {\n  padding-right: 0 !important;\n}\n/**\n * Main Grid\n * */\n.app-grid {\n  padding: 2px;\n  background: #fff;\n  margin-left: 0;\n  margin-right: 0;\n}\n.app-grid__sidebar {\n  background: #e9eff5;\n}\n.app-grid .row-offcanvas {\n  display: -ms-flex;\n  display: -webkit-flex;\n  display: flex;\n}\n/**\n * Buttons\n * */\n.btn-default {\n  color: #566d86;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n}\n.btn-default:hover,\n.btn-default:focus,\n.btn-default:active {\n  background-color: #ffffff;\n}\n.btn-default--bold {\n  font-weight: bold;\n}\n.btn-default--small {\n  padding: 2px 15px;\n}\n.btn-default--officeCard {\n  vertical-align: top;\n  margin: 0 0 5px 0;\n}\n.btn-default--strong {\n  border: 1px solid #566d86;\n}\n.btn-default--strong:hover,\n.btn-default--strong:focus,\n.btn-default--strong:active {\n  border: 1px solid #416185;\n}\n.btn-primary {\n  color: #fff;\n  border: 1px solid transparent;\n  border-radius: 2px;\n  background: #2888d1;\n}\n.btn-primary:hover,\n.btn-primary:focus,\n.btn-primary:active {\n  color: #fff;\n  background: #1b7dc7;\n}\n.btn-primary--small {\n  padding: 2px 15px;\n}\n.btn-primary--officeCard {\n  font-weight: bold;\n  margin-left: 5px;\n}\n.btn-primary--offices-continue {\n  margin: 0 0 5px 10px;\n}\n@media screen and (max-width: 768px) {\n  .app-grid__sidebar {\n    background: transparent;\n  }\n  .row-offcanvas {\n    display: block !important;\n    position: relative;\n    -webkit-transition: all 0.4s ease-out;\n    -moz-transition: all 0.4s ease-out;\n    transition: all 0.4s ease-out;\n  }\n  .row-offcanvas-left #sidebarLeft {\n    left: -90%;\n  }\n  .row-offcanvas-left.active {\n    left: 30%;\n  }\n  .sidebar-offcanvas {\n    position: absolute;\n    z-index: 200;\n    top: 0;\n    width: 90%;\n    margin-left: 10px;\n  }\n  #offcanvasleft,\n  #offcanvasright {\n    margin-top: 10px;\n  }\n}\n@media screen and (max-width: 510px) {\n  .row-offcanvas-left #sidebarLeft {\n    left: -120%;\n  }\n  .row-offcanvas-left.active {\n    left: 40%;\n  }\n  .sidebar-offcanvas {\n    width: 120%;\n  }\n}\n@media screen and (max-width: 420px) {\n  .row-offcanvas-left #sidebarLeft {\n    left: -150%;\n  }\n  .row-offcanvas-left.active {\n    left: 50%;\n  }\n  .sidebar-offcanvas {\n    width: 150%;\n  }\n}\n", ""]);
 
 // exports
 
