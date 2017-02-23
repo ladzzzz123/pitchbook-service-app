@@ -9,7 +9,7 @@ const Offices = props => (
   <div className="offices">
     <Grid fluid>
       <Row>
-        <Col xs={12} sm={12} md={12} lg={10} className="no-padding-left no-padding-right">
+        <Col xs={12} sm={11} md={11} lg={11} className="no-padding-left no-padding-right">
           <h1 className="offices__header">Offices <span className="offices__header--grey">| Company Info</span></h1>
           <div className="offices_description">
             Updating your location and contact informationhelps you appeal to

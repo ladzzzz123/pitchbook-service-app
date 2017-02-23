@@ -7,14 +7,14 @@ const OfficeCard = props => (
   <div className="office">
     <Grid fluid>
       <Row>
-        <Col xs={12} sm={12} md={5} lg={4} className="no-padding-left no-padding-right">
+        <Col xs={6} sm={6} md={5} lg={4}>
           <dl className="row">
             <dt className="col-sm-4">Address:</dt>
             <dd className="col-sm-8">
               {
                 props.office.primary_hq
-                ? <div className="office__primary-hq">
-                  <span className="glyphicon glyphicon-ok" />
+                  ? <div className="office__primary-hq">
+                    <span className="glyphicon glyphicon-ok" />
                     &nbsp;Primary HQ
                   </div>
                 : null
@@ -26,7 +26,7 @@ const OfficeCard = props => (
             </dd>
           </dl>
         </Col>
-        <Col xs={12} sm={12} md={5} lg={4} className="no-padding-left no-padding-right">
+        <Col xs={6} sm={6} md={5} lg={4}>
           <dl className="row">
             <dt className="col-sm-4">Phone:</dt>
             <dd className="col-sm-8">{props.office.phone}</dd>
