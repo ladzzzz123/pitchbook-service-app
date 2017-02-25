@@ -5,7 +5,7 @@
  * */
 body {
   color: @main-font-color;
-  background: @body-bg;
+  background: @main-bg-color;
 }
 .no-padding-left {
   padding-left: 0 !important;
@@ -91,6 +91,104 @@ body {
     margin: 0 0 5px 10px;
   }
 }
+
+/**
+ * Inputs
+ * */
+ input.form-control,
+ select:not([multiple]) {
+   color: @main-font-color;
+   height: 30px;
+   box-shadow: none;
+   border-radius: 2px;
+   background-color: @main-bg-color;
+ }
+
+ /**
+  * Box actions
+  * */
+ .box-actions {
+   text-align: right;
+
+   @media (max-width: 992px) {
+     & {
+        text-align: center;
+     }
+   }
+ }
+
+ /**
+  * Offices
+  * */
+ .offices {
+   padding-left: 5%;
+
+   &__header {
+     color: #53687e;
+     font-size: 30px;
+     font-weight: normal;
+     padding-top: 20px;
+     padding-bottom: 15px;
+     text-transform: uppercase;
+
+     &--grey {
+       color: #b9bfc5;
+     }
+   }
+
+   &__add-action {
+     float: left;
+   }
+   &__amount {
+     float: right;
+     margin-top: 7px;
+   }
+   &__actions {
+     margin-bottom: 50px;
+   }
+   &__provide-comments {
+     padding: 8px 0;
+     margin-left: 70px;
+
+     &:before {
+       content: '';
+       display: inline-block;
+       width: 15px;
+       height: 15px;
+       margin: 0 5px -2px 0;
+       background: url('../img/add-icon.jpg') no-repeat;
+     }
+   }
+
+   hr.dotted {
+     .dotted(#dcdfe2);
+     margin: 40px 0;
+   }
+
+
+   @media (max-width: 900px) {
+     & {
+       &__provide-comments {
+         float: none !important;
+         margin: 50px 0 0 0;
+       }
+     }
+   }
+   @media (max-width: 500px) {
+     & {
+       &__skip {
+         float: left !important;
+         clear: left;
+       }
+       &__back {
+         margin: 0 5px 5px 0;
+       }
+       &__provide-comments {
+         margin: 90px 0 0 0;
+       }
+     }
+   }
+ }
 
 
 @media screen and (max-width: 768px) {
