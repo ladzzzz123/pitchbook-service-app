@@ -4,7 +4,7 @@ import { Grid, Row, Col, Button } from 'react-bootstrap';
 import './OfficeCard.less';
 
 const OfficeCard = props => (
-  <div className="office">
+  <div className="office-card">
     <Grid fluid>
       <Row>
         <Col xs={6} sm={6} md={5} lg={4}>
@@ -13,7 +13,7 @@ const OfficeCard = props => (
             <dd className="col-sm-8">
               {
                 props.office.primary_hq
-                  ? <div className="office__primary-hq">
+                  ? <div className="office-card__primary-hq">
                     <span className="glyphicon glyphicon-ok" />
                     &nbsp;Primary HQ
                   </div>
@@ -37,9 +37,15 @@ const OfficeCard = props => (
           </dl>
         </Col>
         <Col xs={12} sm={12} md={2} lg={4} className="no-padding-left no-padding-right">
-          <div className="office__actions">
+          <div className="box-actions">
             <Button className="btn-default--officeCard btn-default--small">Remove</Button>
-            <Button bsStyle="primary" className="btn-primary--officeCard btn-default--small">Edit</Button>
+            <Button
+              bsStyle="primary"
+              className="btn-primary--officeCard btn-default--small"
+              onClick={() => {}}
+            >
+              Edit
+            </Button>
           </div>
         </Col>
       </Row>
