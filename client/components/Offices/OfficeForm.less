@@ -1,0 +1,35 @@
+.office-form {
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #d6d6d6;
+  margin-top: 15px;
+
+  .checkbox {
+    padding-top: 0;
+  }
+  .col-sm-5 {
+    text-align: right;
+  }
+  .col-sm-5,
+  .col-sm-7 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    & {
+      .col-sm-5 {
+        text-align: left;
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    & {
+      .col-xs-6 {
+        float: none;
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
+}
