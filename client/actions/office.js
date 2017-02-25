@@ -2,13 +2,20 @@ import AppConstants from '../constants/AppConstants';
 import api from '../api';
 
 export default {
-  showNewOfficeForm() {
+  officeEditStart(officeID) {
     return (dispatch) => {
       dispatch({
-        type: AppConstants.SHOW_NEW_OFFICE_FORM,
+        type: AppConstants.OFFICE_EDIT_START,
         payload: {
-          isShowNewOfficeForm: true
+          editItemID: officeID
         }
+      });
+    };
+  },
+  officeEditFinish(officeID) {
+    return (dispatch) => {
+      dispatch({
+        type: AppConstants.OFFICE_EDIT_FINISH
       });
     };
   }
