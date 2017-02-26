@@ -11,13 +11,15 @@ import OfficesHeader from '../components/Offices/OfficesHeader';
 import OfficesFooter from '../components/Offices/OfficesFooter';
 import OfficeCard from '../components/Offices/OfficeCard';
 import OfficeForm from '../components/Offices/OfficeForm';
+import OfficeRemoveModal from '../components/Offices/OfficeRemoveModal';
 
 class OfficesContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isShowAddNewOfficeForm: false
+      isShowAddNewOfficeForm: false,
+      isShowRemoveModal: false
     };
   }
 
@@ -58,8 +60,23 @@ class OfficesContainer extends React.Component {
     this.handlerShowEditForm();
   }
 
-  handlerDeleteOffice() {
+  showRemoveModal(officeID) {
+    this.setState({
+      isShowRemoveModal: true,
+      removeOfficeID: officeID
+    });
+  }
 
+  handlerCloseRemoveModal() {
+    this.setState({
+      isShowRemoveModal: false,
+      removeOfficeID: null
+    });
+  }
+
+  handlerRemoveOffice(reasonOfDelete) {
+    this.props.officeActions.deleteOffice(this.state.removeOfficeID, reasonOfDelete);
+    this.handlerCloseRemoveModal();
   }
 
   render() {
@@ -119,6 +136,7 @@ class OfficesContainer extends React.Component {
                         key={getUniqueID()}
                         office={officeItem}
                         handlerShowEditForm={::this.handlerShowEditForm}
+                        handlerRemove={::this.showRemoveModal}
                       />
                     );
                   }
@@ -129,6 +147,11 @@ class OfficesContainer extends React.Component {
             </Col>
           </Row>
         </Grid>
+        <OfficeRemoveModal
+          isShowModal={this.state.isShowRemoveModal}
+          handlerClose={::this.handlerCloseRemoveModal}
+          handlerSubmit={::this.handlerRemoveOffice}
+        />
       </div>
     );
   }

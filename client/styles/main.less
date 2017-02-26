@@ -96,12 +96,16 @@ body {
  * Inputs
  * */
  input.form-control,
- select:not([multiple]) {
+ select:not([multiple]),
+ textarea.form-control {
    color: @main-font-color;
-   height: 30px;
    box-shadow: none;
    border-radius: 2px;
    background-color: @main-bg-color;
+ }
+ input.form-control,
+ select:not([multiple]) {
+   height: 30px;
  }
 
  /**

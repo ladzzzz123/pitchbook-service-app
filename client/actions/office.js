@@ -26,6 +26,7 @@ export default {
       });
     };
   },
+
   updateOffice(officeData) {
     return (dispatch) => {
       dispatch({
@@ -50,6 +51,32 @@ export default {
       });
     };
   },
+
+  deleteOffice(officeID, reasonOfDelete) {
+    return (dispatch) => {
+      dispatch({
+        type: AppConstants.DELETE_OFFICE_REQUEST
+      });
+
+      api.deleteOffice(officeID, reasonOfDelete)
+      .then((deletedOffice) => {
+        dispatch({
+          type: AppConstants.DELETE_OFFICE_SUCCESS,
+          payload: {
+            item: deletedOffice
+          }
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: AppConstants.DELETE_OFFICE_FAIL
+        });
+
+        dispatch({ type: AppConstants.ADD_ERROR, error: err });
+      });
+    };
+  },
+
   officeEditStart(officeID) {
     return (dispatch) => {
       dispatch({
@@ -60,6 +87,7 @@ export default {
       });
     };
   },
+
   officeEditFinish(officeID) {
     return (dispatch) => {
       dispatch({
