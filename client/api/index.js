@@ -4,7 +4,7 @@ import config from '../config';
 export default {
   getAllOffices() {
     return new Promise((resolve, reject) => {
-      axios.get(`${config.host}${config.api.offices.getAll}`)
+      axios.get(config.api.offices.getAll)
       .then((response) => {
         if (response.data.status) {
           resolve(response.data.offices);
@@ -18,7 +18,7 @@ export default {
 
   createOffice(officeData) {
     return new Promise((resolve, reject) => {
-      axios.post(`${config.host}${config.api.office.create}`, officeData)
+      axios.post(config.api.office.create, officeData)
       .then((response) => {
         if (response.data.status) {
           resolve(response.data.office);
@@ -32,7 +32,7 @@ export default {
 
   updateOffice(officeData) {
     return new Promise((resolve, reject) => {
-      axios.post(`${config.host}${config.api.office.update}`, officeData)
+      axios.post(config.api.office.update, officeData)
       .then((response) => {
         if (response.data.status) {
           resolve(response.data.office);
@@ -46,7 +46,7 @@ export default {
 
   deleteOffice(officeID, reasonOfDelete) {
     return new Promise((resolve, reject) => {
-      axios.post(`${config.host}${config.api.office.delete}`, {
+      axios.post(config.api.office.delete, {
         id: officeID,
         reasonOfDelete
       })
