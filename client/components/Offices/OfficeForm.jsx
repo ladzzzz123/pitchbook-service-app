@@ -1,5 +1,8 @@
 import React from 'react';
 import { Form, FormGroup, FormControl, Checkbox, Col, Button } from 'react-bootstrap';
+import FormGroupInput from '../common/FormGroupInput';
+import OfficeGroupSelect from './OfficeGroupSelect';
+
 import getDataFromForm from '../../utils/getDataFromForm';
 import validateFormData from '../../utils/validateFormData';
 
@@ -42,6 +45,17 @@ class OfficeCard extends React.Component {
     );
   }
 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    const newState = { ...this.state };
+    newState.errors[name] = null;
+
+    this.setState(newState);
+  }
+
   render() {
     const office = this.props.office || {};
 
@@ -49,121 +63,64 @@ class OfficeCard extends React.Component {
       <div className="office-form clearfix" onSubmit={::this.handlerSubmit}>
         <Form horizontal>
           <Col xs={6} sm={6} md={5} lg={4}>
-            <FormGroup controlId="formHorizontalAddress1">
-              <Col sm={5}>
-                *Street Address
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  type="text"
-                  name="address_1"
-                  defaultValue={office.address_1}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup controlId="formHorizontalAddress2">
-              <Col sm={5}>
-                Address 2
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  type="text"
-                  name="address_2"
-                  defaultValue={office.address_2}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup controlId="formHorizontalCity">
-              <Col sm={5}>
-                *City
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  type="text"
-                  name="city"
-                  defaultValue={office.city}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup controlId="formHorizontalStateProvince">
-              <Col sm={5}>
-                *State/Province
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  type="text"
-                  name="state"
-                  defaultValue={office.state}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup controlId="formHorizontalPostalCode">
-              <Col sm={5}>
-                *Postal Code
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  type="text"
-                  name="postal_code"
-                  defaultValue={office.postal_code}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup controlId="formHorizontalCountry">
-              <Col sm={5}>
-                *Country
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  name="country"
-                  componentClass="select"
-                  defaultValue={office.country}
-                >
-                  <option value="">Choose country</option>
-                  <option value="United Arab Emirates">United Arab Emirates</option>
-                  <option value="United Kingdom">United Kingdom</option>
-                  <option value="United States">United States</option>
-                </FormControl>
-              </Col>
-            </FormGroup>
+            <FormGroupInput
+              labelName="*Street Address"
+              name="address_1"
+              defaultValue={office.address_1}
+              handlerChange={::this.handleInputChange}
+              error={this.state.errors.address_1}
+            />
+            <FormGroupInput
+              labelName="Address 2"
+              name="address_2"
+              defaultValue={office.address_2}
+            />
+            <FormGroupInput
+              labelName="*City"
+              name="city"
+              defaultValue={office.city}
+              handlerChange={::this.handleInputChange}
+              error={this.state.errors.city}
+            />
+            <FormGroupInput
+              labelName="*State/Province"
+              name="state"
+              defaultValue={office.state}
+              handlerChange={::this.handleInputChange}
+              error={this.state.errors.state}
+            />
+            <FormGroupInput
+              labelName="*Postal Code"
+              name="postal_code"
+              defaultValue={office.postal_code}
+              handlerChange={::this.handleInputChange}
+              error={this.state.errors.postal_code}
+            />
+            <OfficeGroupSelect
+              labelName="*Country"
+              name="country"
+              defaultValue={office.country}
+              handlerChange={::this.handleInputChange}
+              error={this.state.errors.country}
+            />
           </Col>
           <Col xs={6} sm={6} md={5} lg={4}>
-            <FormGroup controlId="formHorizontalPhone">
-              <Col sm={5}>
-                Phone
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  type="text"
-                  name="phone"
-                  defaultValue={office.phone}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup controlId="formHorizontalFax">
-              <Col sm={5}>
-                Fax
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  type="text"
-                  name="fax"
-                  defaultValue={office.fax}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup controlId="formHorizontalEmail">
-              <Col sm={5}>
-                Email
-              </Col>
-              <Col sm={7}>
-                <FormControl
-                  type="email"
-                  name="email"
-                  defaultValue={office.email}
-                />
-              </Col>
-            </FormGroup>
+            <FormGroupInput
+              labelName="Phone"
+              name="phone"
+              defaultValue={office.phone}
+            />
+            <FormGroupInput
+              labelName="Fax"
+              name="fax"
+              defaultValue={office.fax}
+            />
+            <FormGroupInput
+              labelName="Email"
+              type="email"
+              name="email"
+              defaultValue={office.email}
+            />
             <FormGroup controlId="formHorizontalPassword">
               <Col sm={5}>
                 Office Type

@@ -10,7 +10,6 @@ export default {
 
       api.getAllOffices()
       .then((data) => {
-        console.log(data);
         dispatch({
           type: AppConstants.GET_OFFICES_SUCCESS,
           payload: {

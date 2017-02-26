@@ -25,6 +25,13 @@ class OfficesContainer extends React.Component {
     this.props.officesActions.getAllOffices();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (JSON.stringify(nextProps.office.item) !==
+    JSON.stringify(this.props.office.item)) {
+      this.props.officesActions.getAllOffices();
+    }
+  }
+
   toggleAddNewOfficeForm() {
     this.setState({
       isShowAddNewOfficeForm: !this.state.isShowAddNewOfficeForm
@@ -40,7 +47,8 @@ class OfficesContainer extends React.Component {
   }
 
   handlerCreateOffice(formData) {
-    console.log(formData);
+    this.props.officeActions.createOffice(formData);
+    this.toggleAddNewOfficeForm();
   }
 
   handlerUpdateOffice() {
