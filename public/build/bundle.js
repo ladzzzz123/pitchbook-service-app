@@ -517,7 +517,7 @@ var OfficeCard = function (_React$Component) {
           });
         }
 
-        if (_this2.props.office._id) {
+        if (_this2.props.office) {
           formData.id = _this2.props.office._id;
         }
         return _this2.props.handlerSubmit(formData);
@@ -735,7 +735,8 @@ var FormGroupInput = function FormGroupInput(props) {
         {
           name: props.name,
           componentClass: 'select',
-          defaultValue: props.defaultValue
+          defaultValue: props.defaultValue,
+          onChange: props.handlerChange
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'option',
@@ -768,7 +769,6 @@ var FormGroupInput = function FormGroupInput(props) {
 };
 
 FormGroupInput.defaultProps = {
-  type: 'text',
   name: '',
   controlId: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_getUniqueHashID__["a" /* default */])(),
   defaultValue: '',
@@ -778,7 +778,6 @@ FormGroupInput.defaultProps = {
 };
 
 FormGroupInput.propTypes = {
-  type: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
   name: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
   controlId: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
   defaultValue: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
