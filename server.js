@@ -38,8 +38,8 @@ mongoose.connect(config.get('db:connection') + config.get('db:name'), config.get
     /**
      * Start server
      * */
-    app.listen(config.get('port'), function () {
-        console.log('Server started on port ' + config.get('port'));
+    app.listen(process.env.PORT, function () {
+        console.log('Server started on port ' + process.env.PORT);
     });
 
 
