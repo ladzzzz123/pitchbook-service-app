@@ -16,11 +16,24 @@ export default {
     });
   },
 
-  officeCreate(officeData) {
+  createOffice(officeData) {
     return new Promise((resolve, reject) => {
       axios.post(`${config.host}${config.api.office.create}`, officeData)
       .then((response) => {
-        console.log(response);
+        if (response.data.status) {
+          resolve(response.data.office);
+        } else {
+          reject(response.data.description);
+        }
+      })
+      .catch(error => reject(error));
+    });
+  },
+
+  updateOffice(officeData) {
+    return new Promise((resolve, reject) => {
+      axios.post(`${config.host}${config.api.office.update}`, officeData)
+      .then((response) => {
         if (response.data.status) {
           resolve(response.data.office);
         } else {

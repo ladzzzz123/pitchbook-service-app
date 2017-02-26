@@ -26,8 +26,10 @@ class OfficesContainer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(nextProps.office.item) !==
-    JSON.stringify(this.props.office.item)) {
+    const nextOffice = nextProps.office.item;
+
+    if (nextOffice && Object.keys(nextOffice).length &&
+    JSON.stringify(nextOffice) !== JSON.stringify(this.props.office.item)) {
       this.props.officesActions.getAllOffices();
     }
   }
@@ -51,8 +53,9 @@ class OfficesContainer extends React.Component {
     this.toggleAddNewOfficeForm();
   }
 
-  handlerUpdateOffice() {
-
+  handlerUpdateOffice(formData) {
+    this.props.officeActions.updateOffice(formData);
+    this.handlerShowEditForm();
   }
 
   handlerDeleteOffice() {
