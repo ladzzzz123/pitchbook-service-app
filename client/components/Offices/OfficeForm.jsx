@@ -40,6 +40,9 @@ class OfficeCard extends React.Component {
           });
         }
 
+        if (this.props.office._id) {
+          formData.id = this.props.office._id;
+        }
         return this.props.handlerSubmit(formData);
       }
     );
