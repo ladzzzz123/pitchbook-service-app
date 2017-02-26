@@ -14,6 +14,7 @@ const FormGroupInput = props => (
         name={props.name}
         componentClass="select"
         defaultValue={props.defaultValue}
+        onChange={props.handlerChange}
       >
         <option value="">Choose country</option>
         <option value="United Arab Emirates">United Arab Emirates</option>
@@ -30,7 +31,6 @@ const FormGroupInput = props => (
 );
 
 FormGroupInput.defaultProps = {
-  type: 'text',
   name: '',
   controlId: getUniqueHashID(),
   defaultValue: '',
@@ -40,7 +40,6 @@ FormGroupInput.defaultProps = {
 };
 
 FormGroupInput.propTypes = {
-  type: React.PropTypes.string,
   name: React.PropTypes.string,
   controlId: React.PropTypes.string,
   defaultValue: React.PropTypes.string,
