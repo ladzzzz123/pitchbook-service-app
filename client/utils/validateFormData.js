@@ -16,12 +16,12 @@ const validator = {
     return { status: true };
   },
   state(state) {
-    if (!state) return { status: false, message: 'Password can not be empty' };
+    if (!state) return { status: false, message: 'State/Province can not be empty' };
 
     return { status: true };
   },
   postal_code(postalCode) {
-    if (!postalCode) return { status: false, message: 'Postal Code Confirm can not be empty' };
+    if (!postalCode) return { status: false, message: 'Postal Code can not be empty' };
     if (!regExp.onlyDigits.test(postalCode)) return { status: false, message: 'Postal Code has to contain only digits' };
 
     return { status: true };
