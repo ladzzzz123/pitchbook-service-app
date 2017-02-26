@@ -4,7 +4,7 @@
   },
   "port": 3000,
   "db": {
-    "connection": "mongodb://admin:pitchbook@ds157829.mlab.com:57829/heroku_44v3ghhx",
+    "connection": "mongodb://heroku_44v3ghhx:tum64d0118f4tg3ka1pm2tjmn6@ds157829.mlab.com:57829/",
     "name": "heroku_44v3ghhx",
     "options": {
       "server": {
