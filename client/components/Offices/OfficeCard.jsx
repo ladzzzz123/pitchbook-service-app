@@ -27,7 +27,7 @@ const OfficeCard = (props) => {
                   : null
                 }
                 <div>{office.address_1}</div>
-                <div>{office.address_1}</div>
+                <div>{office.address_2}</div>
                 <div>{office.city}, {office.state} {office.postal_code}</div>
                 <div>{office.country}</div>
               </dd>
