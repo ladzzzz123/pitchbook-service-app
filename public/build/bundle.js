@@ -10,6 +10,28 @@ webpackJsonp([0],{
 
 
 /* harmony default export */ __webpack_exports__["a"] = {
+  createOffice: function createOffice(officeData) {
+    return function (dispatch) {
+      dispatch({
+        type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_REQUEST
+      });
+
+      __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].officeCreate(officeData).then(function (office) {
+        dispatch({
+          type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_SUCCESS,
+          payload: {
+            item: office
+          }
+        });
+      }).catch(function (err) {
+        dispatch({
+          type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_FAIL
+        });
+
+        dispatch({ type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].ADD_ERROR, error: err });
+      });
+    };
+  },
   officeEditStart: function officeEditStart(officeID) {
     return function (dispatch) {
       dispatch({
@@ -48,7 +70,6 @@ webpackJsonp([0],{
       });
 
       __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].getAllOffices().then(function (data) {
-        console.log(data);
         dispatch({
           type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].GET_OFFICES_SUCCESS,
           payload: {
@@ -85,7 +106,21 @@ webpackJsonp([0],{
         if (response.data.status) {
           resolve(response.data.offices);
         } else {
-          reject(response.description);
+          reject(response.data.description);
+        }
+      }).catch(function (error) {
+        return reject(error);
+      });
+    });
+  },
+  officeCreate: function officeCreate(officeData) {
+    return new Promise(function (resolve, reject) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].host + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].api.office.create, officeData).then(function (response) {
+        console.log(response);
+        if (response.data.status) {
+          resolve(response.data.office);
+        } else {
+          reject(response.data.description);
         }
       }).catch(function (error) {
         return reject(error);
@@ -393,10 +428,14 @@ if(true) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/react.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__ = __webpack_require__("./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_getDataFromForm__ = __webpack_require__("./client/utils/getDataFromForm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_validateFormData__ = __webpack_require__("./client/utils/validateFormData.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__OfficeForm_less__ = __webpack_require__("./client/components/Offices/OfficeForm.less");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__OfficeForm_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__OfficeForm_less__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__ = __webpack_require__("./client/components/common/FormGroupInput.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__OfficeGroupSelect__ = __webpack_require__("./client/components/Offices/OfficeGroupSelect.jsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_getDataFromForm__ = __webpack_require__("./client/utils/getDataFromForm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_validateFormData__ = __webpack_require__("./client/utils/validateFormData.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__OfficeForm_less__ = __webpack_require__("./client/components/Offices/OfficeForm.less");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__OfficeForm_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__OfficeForm_less__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -404,6 +443,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
 
 
 
@@ -433,8 +475,8 @@ var OfficeCard = function (_React$Component) {
 
       e.preventDefault();
 
-      var formData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_getDataFromForm__["a" /* default */])(e.target);
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_validateFormData__["a" /* default */])(Object.keys(this.props.errors), formData, function (hasErrors, errorState) {
+      var formData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_getDataFromForm__["a" /* default */])(e.target);
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__utils_validateFormData__["a" /* default */])(Object.keys(this.props.errors), formData, function (hasErrors, errorState) {
         if (hasErrors) {
           return _this2.setState({
             errors: errorState
@@ -443,6 +485,18 @@ var OfficeCard = function (_React$Component) {
 
         return _this2.props.handlerSubmit(formData);
       });
+    }
+  }, {
+    key: 'handleInputChange',
+    value: function handleInputChange(event) {
+      var target = event.target;
+      var value = target.type === 'checkbox' ? target.checked : target.value;
+      var name = target.name;
+
+      var newState = _extends({}, this.state);
+      newState.errors[name] = null;
+
+      this.setState(newState);
     }
   }, {
     key: 'render',
@@ -458,195 +512,66 @@ var OfficeCard = function (_React$Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
             { xs: 6, sm: 6, md: 5, lg: 4 },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalAddress1' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                '*Street Address'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
-                  type: 'text',
-                  name: 'address_1',
-                  defaultValue: office.address_1
-                })
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalAddress2' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                'Address 2'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
-                  type: 'text',
-                  name: 'address_2',
-                  defaultValue: office.address_2
-                })
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalCity' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                '*City'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
-                  type: 'text',
-                  name: 'city',
-                  defaultValue: office.city
-                })
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalStateProvince' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                '*State/Province'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
-                  type: 'text',
-                  name: 'state',
-                  defaultValue: office.state
-                })
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalPostalCode' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                '*Postal Code'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
-                  type: 'text',
-                  name: 'postal_code',
-                  defaultValue: office.postal_code
-                })
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalCountry' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                '*Country'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"],
-                  {
-                    name: 'country',
-                    componentClass: 'select',
-                    defaultValue: office.country
-                  },
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'option',
-                    { value: '' },
-                    'Choose country'
-                  ),
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'option',
-                    { value: 'United Arab Emirates' },
-                    'United Arab Emirates'
-                  ),
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'option',
-                    { value: 'United Kingdom' },
-                    'United Kingdom'
-                  ),
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'option',
-                    { value: 'United States' },
-                    'United States'
-                  )
-                )
-              )
-            )
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__["a" /* default */], {
+              labelName: '*Street Address',
+              name: 'address_1',
+              defaultValue: office.address_1,
+              handlerChange: this.handleInputChange.bind(this),
+              error: this.state.errors.address_1
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__["a" /* default */], {
+              labelName: 'Address 2',
+              name: 'address_2',
+              defaultValue: office.address_2
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__["a" /* default */], {
+              labelName: '*City',
+              name: 'city',
+              defaultValue: office.city,
+              handlerChange: this.handleInputChange.bind(this),
+              error: this.state.errors.city
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__["a" /* default */], {
+              labelName: '*State/Province',
+              name: 'state',
+              defaultValue: office.state,
+              handlerChange: this.handleInputChange.bind(this),
+              error: this.state.errors.state
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__["a" /* default */], {
+              labelName: '*Postal Code',
+              name: 'postal_code',
+              defaultValue: office.postal_code,
+              handlerChange: this.handleInputChange.bind(this),
+              error: this.state.errors.postal_code
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__OfficeGroupSelect__["a" /* default */], {
+              labelName: '*Country',
+              name: 'country',
+              defaultValue: office.country,
+              handlerChange: this.handleInputChange.bind(this),
+              error: this.state.errors.country
+            })
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
             { xs: 6, sm: 6, md: 5, lg: 4 },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalPhone' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                'Phone'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
-                  type: 'text',
-                  name: 'phone',
-                  defaultValue: office.phone
-                })
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalFax' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                'Fax'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
-                  type: 'text',
-                  name: 'fax',
-                  defaultValue: office.fax
-                })
-              )
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
-              { controlId: 'formHorizontalEmail' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 5 },
-                'Email'
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
-                { sm: 7 },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
-                  type: 'email',
-                  name: 'email',
-                  defaultValue: office.email
-                })
-              )
-            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__["a" /* default */], {
+              labelName: 'Phone',
+              name: 'phone',
+              defaultValue: office.phone
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__["a" /* default */], {
+              labelName: 'Fax',
+              name: 'fax',
+              defaultValue: office.fax
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__common_FormGroupInput__["a" /* default */], {
+              labelName: 'Email',
+              type: 'email',
+              name: 'email',
+              defaultValue: office.email
+            }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
               { controlId: 'formHorizontalPassword' },
@@ -737,6 +662,95 @@ if(true) {
 	// When the module is disposed, remove the <style> tags
 	module.hot.dispose(function() { update(); });
 }
+
+/***/ }),
+
+/***/ "./client/components/Offices/OfficeGroupSelect.jsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/react.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__ = __webpack_require__("./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_getUniqueHashID__ = __webpack_require__("./client/utils/getUniqueHashID.js");
+
+
+
+
+
+var FormGroupInput = function FormGroupInput(props) {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
+    {
+      controlId: props.controlId,
+      validationState: props.error ? 'error' : null
+    },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+      { sm: 5 },
+      props.labelName
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+      { sm: 7 },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"],
+        {
+          name: props.name,
+          componentClass: 'select',
+          defaultValue: props.defaultValue
+        },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { value: '' },
+          'Choose country'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { value: 'United Arab Emirates' },
+          'United Arab Emirates'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { value: 'United Kingdom' },
+          'United Kingdom'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { value: 'United States' },
+          'United States'
+        )
+      ),
+      props.error ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["HelpBlock"],
+        null,
+        props.error
+      ) : null
+    )
+  );
+};
+
+FormGroupInput.defaultProps = {
+  type: 'text',
+  name: '',
+  controlId: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_getUniqueHashID__["a" /* default */])(),
+  defaultValue: '',
+  labelName: '',
+  handlerChange: function handlerChange() {},
+  error: ''
+};
+
+FormGroupInput.propTypes = {
+  type: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+  name: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+  controlId: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+  defaultValue: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+  labelName: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
+  handlerChange: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func,
+  error: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string
+};
+
+/* harmony default export */ __webpack_exports__["a"] = FormGroupInput;
 
 /***/ }),
 
@@ -922,6 +936,104 @@ if(true) {
 
 /***/ }),
 
+/***/ "./client/components/common/FormGroupInput.jsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/react.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__ = __webpack_require__("./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_getUniqueHashID__ = __webpack_require__("./client/utils/getUniqueHashID.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormGroupInput_less__ = __webpack_require__("./client/components/common/FormGroupInput.less");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__FormGroupInput_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__FormGroupInput_less__);
+
+
+
+
+
+
+
+var FormGroupInput = function FormGroupInput(props) {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormGroup"],
+    {
+      controlId: props.controlId,
+      validationState: props.error ? 'error' : null
+    },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+      { sm: 5 },
+      props.labelName
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["Col"],
+      { sm: 7 },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["FormControl"], {
+        type: props.type,
+        name: props.name,
+        defaultValue: props.defaultValue,
+        onChange: props.handlerChange
+      }),
+      props.error ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        __WEBPACK_IMPORTED_MODULE_1_react_bootstrap__["HelpBlock"],
+        null,
+        props.error
+      ) : null
+    )
+  );
+};
+
+FormGroupInput.defaultProps = {
+  type: 'text',
+  name: '',
+  controlId: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_getUniqueHashID__["a" /* default */])(),
+  defaultValue: '',
+  labelName: '',
+  handlerChange: function handlerChange() {},
+  error: ''
+};
+
+FormGroupInput.propTypes = {
+  type: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+  name: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+  controlId: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+  defaultValue: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
+  labelName: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string.isRequired,
+  handlerChange: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.func,
+  error: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string
+};
+
+/* harmony default export */ __webpack_exports__["a"] = FormGroupInput;
+
+/***/ }),
+
+/***/ "./client/components/common/FormGroupInput.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/common/FormGroupInput.less");
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/style-loader/addStyles.js")(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(true) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/common/FormGroupInput.less", function() {
+			var newContent = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/common/FormGroupInput.less");
+			if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
 /***/ "./client/config/index.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -950,6 +1062,9 @@ if(true) {
   GET_OFFICES_REQUEST: 'GET_OFFICES_REQUEST',
   GET_OFFICES_SUCCESS: 'GET_OFFICES_SUCCESS',
   GET_OFFICES_FAIL: 'GET_OFFICES_FAIL',
+  CREATE_OFFICE_REQUEST: 'CREATE_OFFICE_REQUEST',
+  CREATE_OFFICE_SUCCESS: 'CREATE_OFFICE_SUCCESS',
+  CREATE_OFFICE_FAIL: 'CREATE_OFFICE_FAIL',
   OFFICE_EDIT_START: 'OFFICE_EDIT_START',
   OFFICE_EDIT_FINISH: 'OFFICE_EDIT_FINISH',
   ADD_ERROR: 'ADD_ERROR',
@@ -1094,6 +1209,13 @@ var OfficesContainer = function (_React$Component) {
       this.props.officesActions.getAllOffices();
     }
   }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (JSON.stringify(nextProps.office.item) !== JSON.stringify(this.props.office.item)) {
+        this.props.officesActions.getAllOffices();
+      }
+    }
+  }, {
     key: 'toggleAddNewOfficeForm',
     value: function toggleAddNewOfficeForm() {
       this.setState({
@@ -1113,7 +1235,8 @@ var OfficesContainer = function (_React$Component) {
   }, {
     key: 'handlerCreateOffice',
     value: function handlerCreateOffice(formData) {
-      console.log(formData);
+      this.props.officeActions.createOffice(formData);
+      this.toggleAddNewOfficeForm();
     }
   }, {
     key: 'handlerUpdateOffice',
@@ -1361,6 +1484,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 var initialState = {
+  item: null,
   editItemID: null
 };
 
@@ -1371,7 +1495,11 @@ function projects() {
   switch (action.type) {
 
     case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].OFFICE_EDIT_START:
+    case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_SUCCESS:
       return _extends({}, state, action.payload);
+
+    case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_FAIL:
+      return _extends({}, state, { item: null });
 
     case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].OFFICE_EDIT_FINISH:
       return _extends({}, state, { editItemID: null });
@@ -1480,6 +1608,19 @@ if(true) {
 
 /***/ }),
 
+/***/ "./client/utils/getUniqueHashID.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = function () {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+  return "" + s4() + s4() + s4();
+};
+
+/***/ }),
+
 /***/ "./client/utils/getUniqueID.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1517,12 +1658,12 @@ var validator = {
     return { status: true };
   },
   state: function state(_state) {
-    if (!_state) return { status: false, message: 'Password can not be empty' };
+    if (!_state) return { status: false, message: 'State/Province can not be empty' };
 
     return { status: true };
   },
   postal_code: function postal_code(postalCode) {
-    if (!postalCode) return { status: false, message: 'Postal Code Confirm can not be empty' };
+    if (!postalCode) return { status: false, message: 'Postal Code can not be empty' };
     if (!regExp.onlyDigits.test(postalCode)) return { status: false, message: 'Postal Code has to contain only digits' };
 
     return { status: true };
@@ -1614,6 +1755,21 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 // module
 exports.push([module.i, ".sidebar {\n  border-radius: 2px;\n  border: none;\n  background-color: transparent;\n}\n.sidebar__logo {\n  width: 100%;\n  height: 140px;\n  background: url(" + __webpack_require__("./client/img/logo-2.png") + ") no-repeat center center #175786;\n}\n.sidebar .navbar-header {\n  color: #596d83;\n  width: 100%;\n  padding: 15px;\n  text-transform: uppercase;\n}\n.sidebar .navbar-default {\n  border: none;\n}\n.sidebar .navbar-nav li a:hover {\n  color: #4b5767 !important;\n}\n.sidebar__common-nav li a {\n  display: inline-block;\n  color: #8c96a3;\n  padding-top: 7px;\n  padding-bottom: 7px;\n}\n.sidebar__common-nav li.active a {\n  position: relative;\n  color: #4b5767 !important;\n  font-weight: bold;\n  background-color: transparent !important;\n}\n.sidebar__common-nav li.active a:after {\n  content: '';\n  position: absolute;\n  top: 0;\n  left: 0;\n  display: block;\n  width: 2px;\n  height: 100%;\n  background: #2888d1;\n}\n.sidebar__company-nav {\n  margin-top: 10px;\n}\n.sidebar__company-nav li a {\n  color: #596d83;\n  text-transform: uppercase;\n  border-bottom: 1px solid #d8dde3;\n  padding-top: 12px;\n  padding-bottom: 12px;\n}\n.sidebar__company-nav li:first-child {\n  border-top: 1px solid #d8dde3;\n}\n@media (min-width: 768px) {\n  .sidebar .navbar-header .navbar-brand {\n    float: none;\n    display: block;\n    text-align: center;\n    margin: 0 auto;\n  }\n  .sidebar .container {\n    width: auto;\n    padding-left: 0;\n    padding-right: 0;\n  }\n  .sidebar .navbar-default {\n    padding: 0;\n    max-height: none;\n    background-color: transparent;\n  }\n  .sidebar ul {\n    float: none;\n    display: block;\n  }\n  .sidebar ul li {\n    float: none;\n    display: block;\n  }\n}\n@media (max-width: 560px) {\n  .sidebar__logo {\n    background-size: 70%;\n  }\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/less-loader/index.js!./client/components/common/FormGroupInput.less":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")();
+// imports
+
+
+// module
+exports.push([module.i, ".help-block {\n  font-size: 11px;\n  margin-bottom: 0;\n}\n", ""]);
 
 // exports
 
