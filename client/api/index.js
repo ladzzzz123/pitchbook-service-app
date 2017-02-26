@@ -9,7 +9,22 @@ export default {
         if (response.data.status) {
           resolve(response.data.offices);
         } else {
-          reject(response.description);
+          reject(response.data.description);
+        }
+      })
+      .catch(error => reject(error));
+    });
+  },
+
+  officeCreate(officeData) {
+    return new Promise((resolve, reject) => {
+      axios.post(`${config.host}${config.api.office.create}`, officeData)
+      .then((response) => {
+        console.log(response);
+        if (response.data.status) {
+          resolve(response.data.office);
+        } else {
+          reject(response.data.description);
         }
       })
       .catch(error => reject(error));

@@ -13,7 +13,7 @@ const Header = (props) => {
         <p className="pull-left visible-xs">
           <button
             id="offcanvasleft"
-            className="btn btn-xs"
+            className="btn btn-xs offcanvas-btn"
             type="button"
             data-toggle="offcanvasleft"
             onClick={handlerOffCanvasLeft}

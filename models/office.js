@@ -57,6 +57,9 @@ var OfficeSchema = new Schema({
       type: String,
       default: ''
     }
+},
+{
+  timestamps: true
 });
 
 OfficeSchema.statics = {

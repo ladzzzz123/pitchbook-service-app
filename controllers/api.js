@@ -13,7 +13,7 @@ module.exports = {
    */
 
   getAllOffices: function(req, res, next) {
-    Office.find({isDelete: false}, function(err, offices) {
+    Office.find({isDelete: false}, null, {sort: {createdAt: -1}}, function(err, offices) {
       if (err) return res.send({status: false, error: err});
 
       res.send({
@@ -25,10 +25,13 @@ module.exports = {
   officeCreate: function(req, res, next) {
     var newOffice = Office(req.body);
 
-    newOffice.save(function(err) {
+    newOffice.save(function(err, office) {
       if (err) return res.send({status: false, description: 'The office hasn\'t been created'});
 
-      res.send({status: true});
+      res.send({
+        status: true,
+        office: office
+      });
     });
   },
   officeUpdate: function(req, res, next) {

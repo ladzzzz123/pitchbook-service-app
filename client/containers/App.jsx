@@ -17,7 +17,7 @@ class App extends React.Component {
               >
                 <Sidebar />
               </Col>
-              <Col xs={11} sm={8} className="app-grid__content">
+              <Col xs={11} sm={10} lg={12} className="app-grid__content">
                 <div>{this.props.children}</div>
               </Col>
             </Row>

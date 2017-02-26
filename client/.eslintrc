@@ -22,6 +22,7 @@ env:
 rules:
   indent: 2
   func-style: 0
+  no-underscore-dangle: 0
   global-require: 0
   func-names: 0
   import/no-unresolved: 0

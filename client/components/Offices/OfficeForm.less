@@ -1,28 +1,25 @@
-.office-card {
+.office-form {
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #d6d6d6;
   margin-top: 15px;
 
-  &__primary-hq {
-    font-weight: bold;
+  .checkbox {
+    padding-top: 0;
+  }
+  .col-sm-5 {
+    text-align: right;
+  }
+  .col-sm-5,
+  .col-sm-7 {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
-  .col-sm-8 {
-    min-height: 20px;
-  }
-
-  dl {
-    dt {
-      text-align: right;
-    }
-  }
   @media (max-width: 768px) {
     & {
-      dl {
-        dt {
-          text-align: left;
-        }
+      .col-sm-5 {
+        text-align: left;
       }
     }
   }
