@@ -42,5 +42,22 @@ export default {
       })
       .catch(error => reject(error));
     });
+  },
+
+  deleteOffice(officeID, reasonOfDelete) {
+    return new Promise((resolve, reject) => {
+      axios.post(`${config.host}${config.api.office.delete}`, {
+        id: officeID,
+        reasonOfDelete
+      })
+      .then((response) => {
+        if (response.data.status) {
+          resolve(response.data.office);
+        } else {
+          reject(response.data.description);
+        }
+      })
+      .catch(error => reject(error));
+    });
   }
 };

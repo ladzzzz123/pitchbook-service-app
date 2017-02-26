@@ -1,7 +1,7 @@
 import AppConstants from '../constants/AppConstants';
 
 const initialState = {
-  item: null,
+  item: {},
   editItemID: null
 };
 
@@ -11,11 +11,13 @@ export default function projects(state = initialState, action) {
     case AppConstants.OFFICE_EDIT_START:
     case AppConstants.CREATE_OFFICE_SUCCESS:
     case AppConstants.UPDATE_OFFICE_SUCCESS:
+    case AppConstants.DELETE_OFFICE_SUCCESS:
       return { ...state, ...action.payload };
 
     case AppConstants.CREATE_OFFICE_FAIL:
     case AppConstants.UPDATE_OFFICE_FAIL:
-      return { ...state, item: null };
+    case AppConstants.DELETE_OFFICE_FAIL:
+      return { ...state, item: {} };
 
     case AppConstants.OFFICE_EDIT_FINISH:
       return { ...state, editItemID: null };

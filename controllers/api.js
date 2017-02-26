@@ -57,7 +57,10 @@ module.exports = {
     }, function(err, office) {
       if (err) return res.send({status: false, description: 'The office hasn\'t been deleted'});
 
-      res.send({status: true});
+      res.send({
+        status: true,
+        office: office
+      });
     });
   }
 };
