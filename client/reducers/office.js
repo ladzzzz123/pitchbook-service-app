@@ -10,9 +10,11 @@ export default function projects(state = initialState, action) {
 
     case AppConstants.OFFICE_EDIT_START:
     case AppConstants.CREATE_OFFICE_SUCCESS:
+    case AppConstants.UPDATE_OFFICE_SUCCESS:
       return { ...state, ...action.payload };
 
     case AppConstants.CREATE_OFFICE_FAIL:
+    case AppConstants.UPDATE_OFFICE_FAIL:
       return { ...state, item: null };
 
     case AppConstants.OFFICE_EDIT_FINISH:

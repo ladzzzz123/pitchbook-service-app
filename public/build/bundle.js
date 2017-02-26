@@ -16,7 +16,7 @@ webpackJsonp([0],{
         type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_REQUEST
       });
 
-      __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].officeCreate(officeData).then(function (office) {
+      __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].createOffice(officeData).then(function (office) {
         dispatch({
           type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_SUCCESS,
           payload: {
@@ -26,6 +26,28 @@ webpackJsonp([0],{
       }).catch(function (err) {
         dispatch({
           type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_FAIL
+        });
+
+        dispatch({ type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].ADD_ERROR, error: err });
+      });
+    };
+  },
+  updateOffice: function updateOffice(officeData) {
+    return function (dispatch) {
+      dispatch({
+        type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].UPDATE_OFFICE_REQUEST
+      });
+
+      __WEBPACK_IMPORTED_MODULE_1__api__["a" /* default */].updateOffice(officeData).then(function (office) {
+        dispatch({
+          type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].UPDATE_OFFICE_SUCCESS,
+          payload: {
+            item: office
+          }
+        });
+      }).catch(function (err) {
+        dispatch({
+          type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].UPDATE_OFFICE_FAIL
         });
 
         dispatch({ type: __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].ADD_ERROR, error: err });
@@ -113,10 +135,22 @@ webpackJsonp([0],{
       });
     });
   },
-  officeCreate: function officeCreate(officeData) {
+  createOffice: function createOffice(officeData) {
     return new Promise(function (resolve, reject) {
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].host + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].api.office.create, officeData).then(function (response) {
-        console.log(response);
+        if (response.data.status) {
+          resolve(response.data.office);
+        } else {
+          reject(response.data.description);
+        }
+      }).catch(function (error) {
+        return reject(error);
+      });
+    });
+  },
+  updateOffice: function updateOffice(officeData) {
+    return new Promise(function (resolve, reject) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].host + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].api.office.update, officeData).then(function (response) {
         if (response.data.status) {
           resolve(response.data.office);
         } else {
@@ -266,7 +300,7 @@ var OfficeCard = function OfficeCard(props) {
 
 
   function handlerEdit() {
-    props.handlerEditOfficeCard(office._id);
+    props.handlerShowEditForm(office._id);
   }
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -306,7 +340,7 @@ var OfficeCard = function OfficeCard(props) {
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                office.address_1
+                office.address_2
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
@@ -483,6 +517,9 @@ var OfficeCard = function (_React$Component) {
           });
         }
 
+        if (_this2.props.office) {
+          formData.id = _this2.props.office._id;
+        }
         return _this2.props.handlerSubmit(formData);
       });
     }
@@ -698,7 +735,8 @@ var FormGroupInput = function FormGroupInput(props) {
         {
           name: props.name,
           componentClass: 'select',
-          defaultValue: props.defaultValue
+          defaultValue: props.defaultValue,
+          onChange: props.handlerChange
         },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'option',
@@ -731,7 +769,6 @@ var FormGroupInput = function FormGroupInput(props) {
 };
 
 FormGroupInput.defaultProps = {
-  type: 'text',
   name: '',
   controlId: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_getUniqueHashID__["a" /* default */])(),
   defaultValue: '',
@@ -741,7 +778,6 @@ FormGroupInput.defaultProps = {
 };
 
 FormGroupInput.propTypes = {
-  type: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
   name: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
   controlId: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
   defaultValue: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string,
@@ -1062,11 +1098,18 @@ if(true) {
   GET_OFFICES_REQUEST: 'GET_OFFICES_REQUEST',
   GET_OFFICES_SUCCESS: 'GET_OFFICES_SUCCESS',
   GET_OFFICES_FAIL: 'GET_OFFICES_FAIL',
+
   CREATE_OFFICE_REQUEST: 'CREATE_OFFICE_REQUEST',
   CREATE_OFFICE_SUCCESS: 'CREATE_OFFICE_SUCCESS',
   CREATE_OFFICE_FAIL: 'CREATE_OFFICE_FAIL',
+
+  UPDATE_OFFICE_REQUEST: 'UPDATE_OFFICE_REQUEST',
+  UPDATE_OFFICE_SUCCESS: 'UPDATE_OFFICE_SUCCESS',
+  UPDATE_OFFICE_FAIL: 'UPDATE_OFFICE_FAIL',
+
   OFFICE_EDIT_START: 'OFFICE_EDIT_START',
   OFFICE_EDIT_FINISH: 'OFFICE_EDIT_FINISH',
+
   ADD_ERROR: 'ADD_ERROR',
   REMOVE_ERROR: 'REMOVE_ERROR'
 };
@@ -1211,7 +1254,9 @@ var OfficesContainer = function (_React$Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      if (JSON.stringify(nextProps.office.item) !== JSON.stringify(this.props.office.item)) {
+      var nextOffice = nextProps.office.item;
+
+      if (nextOffice && Object.keys(nextOffice).length && JSON.stringify(nextOffice) !== JSON.stringify(this.props.office.item)) {
         this.props.officesActions.getAllOffices();
       }
     }
@@ -1223,13 +1268,13 @@ var OfficesContainer = function (_React$Component) {
       });
     }
   }, {
-    key: 'handlerEditOfficeCard',
-    value: function handlerEditOfficeCard(officeID) {
+    key: 'handlerShowEditForm',
+    value: function handlerShowEditForm(officeID) {
       this.props.officeActions.officeEditStart(officeID);
     }
   }, {
-    key: 'handlerCancelUpdateOffice',
-    value: function handlerCancelUpdateOffice() {
+    key: 'handlerHideEditForm',
+    value: function handlerHideEditForm() {
       this.props.officeActions.officeEditFinish();
     }
   }, {
@@ -1240,7 +1285,10 @@ var OfficesContainer = function (_React$Component) {
     }
   }, {
     key: 'handlerUpdateOffice',
-    value: function handlerUpdateOffice() {}
+    value: function handlerUpdateOffice(formData) {
+      this.props.officeActions.updateOffice(formData);
+      this.handlerShowEditForm();
+    }
   }, {
     key: 'handlerDeleteOffice',
     value: function handlerDeleteOffice() {}
@@ -1305,7 +1353,7 @@ var OfficesContainer = function (_React$Component) {
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Offices_OfficeForm__["a" /* default */], {
                       key: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_getUniqueID__["a" /* default */])(),
                       office: officeItem,
-                      handlerCancel: _this2.handlerCancelUpdateOffice.bind(_this2),
+                      handlerCancel: _this2.handlerHideEditForm.bind(_this2),
                       handlerSubmit: _this2.handlerUpdateOffice.bind(_this2)
                     });
                   }
@@ -1313,7 +1361,7 @@ var OfficesContainer = function (_React$Component) {
                   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__components_Offices_OfficeCard__["a" /* default */], {
                     key: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_getUniqueID__["a" /* default */])(),
                     office: officeItem,
-                    handlerEditOfficeCard: _this2.handlerEditOfficeCard.bind(_this2)
+                    handlerShowEditForm: _this2.handlerShowEditForm.bind(_this2)
                   });
                 })
               ),
@@ -1496,9 +1544,11 @@ function projects() {
 
     case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].OFFICE_EDIT_START:
     case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_SUCCESS:
+    case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].UPDATE_OFFICE_SUCCESS:
       return _extends({}, state, action.payload);
 
     case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].CREATE_OFFICE_FAIL:
+    case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].UPDATE_OFFICE_FAIL:
       return _extends({}, state, { item: null });
 
     case __WEBPACK_IMPORTED_MODULE_0__constants_AppConstants__["a" /* default */].OFFICE_EDIT_FINISH:
@@ -1600,7 +1650,8 @@ if(true) {
   var formDataJSON = {};
   var formElements = form.querySelectorAll('input, select');
   formElements.forEach(function (element) {
-    formDataJSON[element.name] = element.value;
+    var value = element.type === 'checkbox' ? element.checked : element.value;
+    formDataJSON[element.name] = value;
   });
 
   return formDataJSON;

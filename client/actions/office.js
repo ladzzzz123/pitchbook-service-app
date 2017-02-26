@@ -8,7 +8,7 @@ export default {
         type: AppConstants.CREATE_OFFICE_REQUEST
       });
 
-      api.officeCreate(officeData)
+      api.createOffice(officeData)
       .then((office) => {
         dispatch({
           type: AppConstants.CREATE_OFFICE_SUCCESS,
@@ -20,6 +20,30 @@ export default {
       .catch((err) => {
         dispatch({
           type: AppConstants.CREATE_OFFICE_FAIL
+        });
+
+        dispatch({ type: AppConstants.ADD_ERROR, error: err });
+      });
+    };
+  },
+  updateOffice(officeData) {
+    return (dispatch) => {
+      dispatch({
+        type: AppConstants.UPDATE_OFFICE_REQUEST
+      });
+
+      api.updateOffice(officeData)
+      .then((office) => {
+        dispatch({
+          type: AppConstants.UPDATE_OFFICE_SUCCESS,
+          payload: {
+            item: office
+          }
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: AppConstants.UPDATE_OFFICE_FAIL
         });
 
         dispatch({ type: AppConstants.ADD_ERROR, error: err });

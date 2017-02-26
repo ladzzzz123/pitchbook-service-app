@@ -41,7 +41,10 @@ module.exports = {
     Office.findByIdAndUpdate(userID, req.body, function(err, office) {
       if (err) return res.send({status: false, description: 'The office hasn\'t been updated'});
 
-      res.send({status: true});
+      res.send({
+        status: true,
+        office: office
+      });
     });
   },
   officeDelete: function(req, res, next) {
