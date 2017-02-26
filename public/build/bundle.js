@@ -266,7 +266,7 @@ var OfficeCard = function OfficeCard(props) {
 
 
   function handlerEdit() {
-    props.handlerEditOfficeCard(office._id);
+    props.handlerShowEditForm(office._id);
   }
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1223,13 +1223,13 @@ var OfficesContainer = function (_React$Component) {
       });
     }
   }, {
-    key: 'handlerEditOfficeCard',
-    value: function handlerEditOfficeCard(officeID) {
+    key: 'handlerShowEditForm',
+    value: function handlerShowEditForm(officeID) {
       this.props.officeActions.officeEditStart(officeID);
     }
   }, {
-    key: 'handlerCancelUpdateOffice',
-    value: function handlerCancelUpdateOffice() {
+    key: 'handlerHideEditForm',
+    value: function handlerHideEditForm() {
       this.props.officeActions.officeEditFinish();
     }
   }, {
@@ -1305,7 +1305,7 @@ var OfficesContainer = function (_React$Component) {
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__components_Offices_OfficeForm__["a" /* default */], {
                       key: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_getUniqueID__["a" /* default */])(),
                       office: officeItem,
-                      handlerCancel: _this2.handlerCancelUpdateOffice.bind(_this2),
+                      handlerCancel: _this2.handlerHideEditForm.bind(_this2),
                       handlerSubmit: _this2.handlerUpdateOffice.bind(_this2)
                     });
                   }
@@ -1313,7 +1313,7 @@ var OfficesContainer = function (_React$Component) {
                   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__components_Offices_OfficeCard__["a" /* default */], {
                     key: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_getUniqueID__["a" /* default */])(),
                     office: officeItem,
-                    handlerEditOfficeCard: _this2.handlerEditOfficeCard.bind(_this2)
+                    handlerShowEditForm: _this2.handlerShowEditForm.bind(_this2)
                   });
                 })
               ),

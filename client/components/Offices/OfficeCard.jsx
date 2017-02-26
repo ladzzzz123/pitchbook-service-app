@@ -7,7 +7,7 @@ const OfficeCard = (props) => {
   const { office } = props;
 
   function handlerEdit() {
-    props.handlerEditOfficeCard(office._id);
+    props.handlerShowEditForm(office._id);
   }
 
   return (

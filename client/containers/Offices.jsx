@@ -38,11 +38,11 @@ class OfficesContainer extends React.Component {
     });
   }
 
-  handlerEditOfficeCard(officeID) {
+  handlerShowEditForm(officeID) {
     this.props.officeActions.officeEditStart(officeID);
   }
 
-  handlerCancelUpdateOffice() {
+  handlerHideEditForm() {
     this.props.officeActions.officeEditFinish();
   }
 
@@ -105,7 +105,7 @@ class OfficesContainer extends React.Component {
                         <OfficeForm
                           key={getUniqueID()}
                           office={officeItem}
-                          handlerCancel={::this.handlerCancelUpdateOffice}
+                          handlerCancel={::this.handlerHideEditForm}
                           handlerSubmit={::this.handlerUpdateOffice}
                         />
                       );
@@ -115,7 +115,7 @@ class OfficesContainer extends React.Component {
                       <OfficeCard
                         key={getUniqueID()}
                         office={officeItem}
-                        handlerEditOfficeCard={::this.handlerEditOfficeCard}
+                        handlerShowEditForm={::this.handlerShowEditForm}
                       />
                     );
                   }
