@@ -1724,7 +1724,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".office-card {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n  margin-top: 15px;\n}\n.office-card__primary-hq {\n  font-weight: bold;\n}\n.office-card dl dt {\n  text-align: right;\n}\n@media (max-width: 768px) {\n  .office-card dl dt {\n    text-align: left;\n  }\n}\n@media (max-width: 480px) {\n  .office-card .col-xs-6 {\n    float: none;\n    width: 100%;\n    margin: 0 auto;\n  }\n}\n", ""]);
+exports.push([module.i, ".office-card {\n  padding: 15px;\n  border-radius: 2px;\n  border: 1px solid #d6d6d6;\n  margin-top: 15px;\n}\n.office-card__primary-hq {\n  font-weight: bold;\n}\n.office-card .col-sm-8 {\n  min-height: 20px;\n}\n.office-card dl dt {\n  text-align: right;\n}\n@media (max-width: 768px) {\n  .office-card dl dt {\n    text-align: left;\n  }\n}\n@media (max-width: 480px) {\n  .office-card .col-xs-6 {\n    float: none;\n    width: 100%;\n    margin: 0 auto;\n  }\n}\n", ""]);
 
 // exports
 

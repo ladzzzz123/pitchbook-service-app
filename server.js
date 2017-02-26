@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 var express = require('express');
 var app = express();
 
-mongoose.Promise = global.Promise;
 mongoose.connect(config.get('db:connection') + config.get('db:name'), config.get('db:options'), function (err) {
     if(err) throw err;
 
