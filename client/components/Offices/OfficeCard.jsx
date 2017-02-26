@@ -9,6 +9,9 @@ const OfficeCard = (props) => {
   function handlerEdit() {
     props.handlerShowEditForm(office._id);
   }
+  function handlerRemove() {
+    props.handlerRemove(office._id);
+  }
 
   return (
     <div className="office-card">
@@ -45,7 +48,12 @@ const OfficeCard = (props) => {
           </Col>
           <Col xs={12} sm={12} md={2} lg={4} className="no-padding-left no-padding-right">
             <div className="box-actions">
-              <Button className="btn-default--officeCard btn-default--small">Remove</Button>
+              <Button
+                className="btn-default--officeCard btn-default--small"
+                onClick={handlerRemove}
+              >
+                Remove
+              </Button>
               <Button
                 bsStyle="primary"
                 className="btn-primary--officeCard btn-default--small"

@@ -63,8 +63,8 @@ class OfficeCard extends React.Component {
     const office = this.props.office || {};
 
     return (
-      <div className="office-form clearfix" onSubmit={::this.handlerSubmit}>
-        <Form horizontal>
+      <div className="office-form clearfix">
+        <Form horizontal onSubmit={::this.handlerSubmit}>
           <Col xs={6} sm={6} md={5} lg={4}>
             <FormGroupInput
               labelName="*Street Address"
