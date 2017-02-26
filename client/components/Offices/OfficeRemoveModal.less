@@ -1,0 +1,29 @@
+.office-rm-modal {
+  .modal-dialog {
+    max-width: 435px;
+  }
+  .modal-body,
+  .modal-footer {
+    padding: 15px 30px;
+  }
+
+  &__message,
+  &__reason {
+    margin-top: 15px;
+  }
+  &__note {
+    margin-top: 20px;
+
+    .control-label {
+      font-weight: normal;
+    }
+    textarea {
+      resize: none;
+      min-height: 65px;
+    }
+
+    &-disabled {
+      color: #8c96a3;
+    }
+  }
+}
